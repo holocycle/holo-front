@@ -7,7 +7,16 @@
       frameborder="0"
       allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture"
       allowfullscreen></iframe>
-    <h2>このアプリのコンセプトを説明した動画</h2>
+    <v-layout>
+      <h2>このアプリのコンセプトを説明した動画</h2>
+      <v-spacer/>
+      <v-btn icon>
+        <v-icon color="yellow">mdi-star</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+    </v-layout>
     <v-chip
       class="ma-2"
       color="#F7002F"

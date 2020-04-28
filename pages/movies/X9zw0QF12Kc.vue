@@ -7,7 +7,18 @@
       frameborder="0"
       allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture"
       allowfullscreen></iframe>
-    <h2>サクラカゼ</h2>
+    <div>
+      <v-layout>
+        <h2>サクラカゼ</h2>
+        <v-spacer/>
+        <v-btn icon>
+          <v-icon color="yellow">mdi-star</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </v-layout>
+    </div>
     <v-chip
       class="ma-2"
       color="#FFA4CF"

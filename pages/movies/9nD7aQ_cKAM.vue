@@ -7,7 +7,18 @@
       frameborder="0"
       allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture"
       allowfullscreen></iframe>
-    <h2>バレンタインキッス</h2>
+    <div>
+      <v-layout>
+        <h2>バレンタインキッス</h2>
+        <v-spacer/>
+        <v-btn icon>
+          <v-icon color="yellow">mdi-star</v-icon>
+        </v-btn>
+        <v-btn icon>
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </v-layout>
+    </div>
     <v-chip class="ma-2" color="#FF7709" label>
       <v-icon left>mdi-account-circle-outline</v-icon>
       夏色まつり
