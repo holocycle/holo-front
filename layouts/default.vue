@@ -30,7 +30,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
       <v-icon>mdi-triangle</v-icon>
-      <v-toolbar-title v-text="title"/>
+      <v-toolbar-title to="" v-text="title"/>
       <v-spacer/>
       <v-btn
         color="primary"

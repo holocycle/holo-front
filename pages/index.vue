@@ -1,114 +1,13 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <div>
-        <h2>
-          人気の動画一覧
-        </h2>
-        <v-row>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/X9zw0QF12Kc"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>【歌ってみた】サクラカゼ</div>
-            </v-card-text>
-          </v-card>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/9nD7aQ_cKAM"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>【歌ってみた】バレンタインキッス</div>
-            </v-card-text>
-          </v-card>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/xccH7xxG5zc"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>コンセプト</div>
-            </v-card-text>
-          </v-card>
-        </v-row>
-      </div>
-      <v-divider></v-divider>
-      <br>
-      <div>
-        <h2>
-          お気に入り動画一覧
-        </h2>
-        <v-row>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/X9zw0QF12Kc"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>【歌ってみた】サクラカゼ</div>
-            </v-card-text>
-          </v-card>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/9nD7aQ_cKAM"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>【歌ってみた】バレンタインキッス</div>
-            </v-card-text>
-          </v-card>
-          <v-card
-            class="mx-auto"
-            max-width="400"
-            to="/movies/xccH7xxG5zc"
-          >
-            <v-img
-              height="200px"
-              src="https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg"
-            ></v-img>
-            <v-card-text class="text--primary">
-              <div>コンセプト</div>
-            </v-card-text>
-          </v-card>
-        </v-row>
-      </div>
-    </v-flex>
-  </v-layout>
+<Top/>
 </template>
 
 <script>
+import Top from '../components/template/Top'
+
 export default {
-  components: {}
+  components: {
+    Top
+  }
 }
 </script>

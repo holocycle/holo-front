@@ -1,0 +1,68 @@
+<template>
+  <v-row>
+    <v-col cols="8">
+      <Movie
+        :url="url"
+        :title="title"
+        :chips="chips"
+        :descriptions="descriptions"
+      />
+    </v-col>
+    <v-col cols="4">
+      <SuggestMovies
+        title="関連動画"
+        :movie-previews="relatedMoviePreviews"
+      />
+      <br>
+      <SuggestMovies
+        title="おすすめ動画"
+        :movie-previews="recommendedMoviePreviews"
+      />
+    </v-col>
+  </v-row>
+</template>
+
+<script>
+import Movie from '../molecules/movies/Movie'
+import SuggestMovies from '../molecules/lists/SuggestMovies'
+
+export default {
+  components: {
+    Movie,
+    SuggestMovies
+  },
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    },
+    chips: {
+      type: Array,
+      required: false,
+      default: null
+    },
+    descriptions: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    relatedMoviePreviews: {
+      type: Array,
+      required: true
+    },
+    recommendedMoviePreviews: {
+      type: Array,
+      required: true
+    }
+  },
+  data () {
+    return {}
+  }
+}
+</script>
+<style>
+</style>

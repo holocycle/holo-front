@@ -1,41 +1,60 @@
 <template>
-  <div>
-    <iframe
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/lwbGo-O6buc?rel=0&start=1320"
-      frameborder="0"
-      allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture"
-      allowfullscreen></iframe>
-    <div>
-      <v-layout>
-        <h2>切り抜き動画を見る紫咲シオン</h2>
-        <v-spacer/>
-        <v-btn icon>
-          <v-icon color="yellow">mdi-star</v-icon>
-        </v-btn>
-        <v-btn icon>
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-      </v-layout>
-    </div>
-    <v-chip class="ma-2" color="#D252FF" label>
-      <v-icon left>mdi-account-circle-outline</v-icon>
-      湊あくあ
-    </v-chip>
-    <v-chip class="ma-2" color="#D450FF" label>
-      <v-icon left>mdi-account-circle-outline</v-icon>
-      紫咲シオン
-    </v-chip>
-    <v-chip class="ma-2" label>tag1</v-chip>
-    <v-chip class="ma-2" label>tag2</v-chip>
-    <p class="text-justify">
-      ここに動画の説明が入る。<br>
-      ほげぴよ
-    </p>
-  </div>
+  <Movies
+    url="https://www.youtube.com/embed/lwbGo-O6buc?rel=0&start=1320"
+    title="切り抜き動画を見る紫咲シオン"
+    :chips="chips"
+    descriptions="ここに動画の説明が入る。"
+    :related-movie-previews="relatedMoviePreviews"
+    :recommended-movie-previews="recommendedMoviePreviews"
+  />
 </template>
 <script>
+import Movies from '../../components/template/Movies'
+
+export default {
+  components: {
+    Movies
+  },
+  data () {
+    return {
+      chips: [
+        {
+          name: '湊あくあ',
+          color: '#D252FF'
+        }, {
+          name: '紫咲シオン',
+          color: '#D450FF'
+        }
+      ],
+      relatedMoviePreviews: [
+        {
+          to: '/movies/HKb9JfeA2-Y',
+          url: 'https://img.youtube.com/vi/HKb9JfeA2-Y/mqdefault.jpg',
+          subTitle: '中笑いのくだり'
+        }, {
+          to: '/movies/lwbGo-O6buc',
+          url: 'https://img.youtube.com/vi/lwbGo-O6buc/mqdefault.jpg',
+          subTitle: '切り抜き動画を見る紫咲シオン'
+        }
+      ],
+      recommendedMoviePreviews: [
+        {
+          to: '/movies/X9zw0QF12Kc',
+          url: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
+          subTitle: 'サクラカゼ'
+        }, {
+          to: '/movies/9nD7aQ_cKAM',
+          url: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
+          subTitle: 'バレンタインキッス'
+        }, {
+          to: '/movies/xccH7xxG5zc',
+          url: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
+          subTitle: 'ここにタイトルが入る'
+        }
+      ]
+    }
+  }
+}
 </script>
 <style>
 </style>
