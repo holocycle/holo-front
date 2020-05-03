@@ -16,7 +16,7 @@
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-item>
-          <v-divider v-else-if="item.divider" :key="index" />
+          <v-divider v-else-if="item.divider" :key="index"/>
           <v-subheader v-else-if="item.header" :key="item.header">
             {{ item.header }}
           </v-subheader>
@@ -29,8 +29,13 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
-      <v-icon>mdi-triangle</v-icon>
-      <v-toolbar-title to="" v-text="title"/>
+
+      <nuxt-link to="/" tag="div">
+        <v-icon>mdi-triangle</v-icon>
+      </nuxt-link>
+      <nuxt-link to="/" tag="div">
+        <v-toolbar-title to="/" v-text="title"/>
+      </nuxt-link>
       <v-spacer/>
       <v-btn
         color="primary"
@@ -38,7 +43,10 @@
       >
         このサイトについて
       </v-btn>
-      <v-btn icon>
+      <v-btn
+        icon
+        to="/login"
+      >
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
@@ -81,17 +89,37 @@ export default {
       drawer: false,
       fixed: false,
       items: [
-        { action: '/', title: 'ページトップ', icon: 'mdi-home' },
+        {
+          action: '/',
+          title: 'ページトップ',
+          icon: 'mdi-home'
+        },
         { divider: true },
         { header: 'ライバー一覧' },
-        { action: '/livers/marine', title: '宝鐘マリン', icon: 'mdi-home' },
-        { action: '/livers/miko', title: 'さくらみこ', icon: 'mdi-home' },
+        {
+          action: '/livers/marine',
+          title: '宝鐘マリン',
+          icon: 'mdi-home'
+        },
+        {
+          action: '/livers/miko',
+          title: 'さくらみこ',
+          icon: 'mdi-home'
+        },
         { divider: true },
         { header: '動画' },
-        { action: '/', title: '人気の動画一覧', icon: 'mdi-groups' },
+        {
+          action: '/',
+          title: '人気の動画一覧',
+          icon: 'mdi-groups'
+        },
         { divider: true },
         { header: '設定' },
-        { action: '/', title: 'ユーザ設定', icon: 'mdi-groups' }
+        {
+          action: '/',
+          title: 'ユーザ設定',
+          icon: 'mdi-groups'
+        }
       ],
       miniVariant: false,
       right: true,

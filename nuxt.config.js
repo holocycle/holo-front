@@ -83,6 +83,7 @@ export default {
     }
   },
   env: {
-    API_URL: process.env.API_URL || 'http://localhost:8080'
+    API_URL: process.env.API_URL || 'http://localhost:8080',
+    LOGIN_URL: process.env.API_URL || 'http://localhost:8080/login/google?callback=http://localhost:3000'
   }
 }
