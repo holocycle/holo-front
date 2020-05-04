@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import GoogleLoginButton from '../components/atoms/google/GoogleLoginButton'
+import GoogleLoginButton from '../../components/atoms/google/GoogleLoginButton'
 
 export default {
   components: {
