@@ -26,7 +26,9 @@
     "types": [
       "@types/node",
       "@nuxt/types"
-    ]
+    ],
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false
   },
   "exclude": [
     "node_modules",
