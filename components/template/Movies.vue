@@ -9,6 +9,7 @@
         :chips="chips"
         :descriptions="descriptions"
       />
+      <Comments/>
     </v-col>
     <v-col cols="4">
       <SuggestMovies
@@ -27,11 +28,13 @@
 <script>
 import Movie from '../molecules/movies/Movie'
 import SuggestMovies from '../molecules/lists/SuggestMovies'
+import Comments from '../molecules/lists/Comments'
 
 export default {
   components: {
     Movie,
-    SuggestMovies
+    SuggestMovies,
+    Comments
   },
   props: {
     videoId: {

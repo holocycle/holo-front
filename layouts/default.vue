@@ -37,16 +37,39 @@
         <v-toolbar-title to="/" v-text="title"/>
       </nuxt-link>
       <v-spacer/>
-      <v-btn
-        color="primary"
-        to="/help"
-      >
-        このサイトについて
+      <v-btn to="/help" icon>
+        <v-icon>mdi-help-circle-outline</v-icon>
       </v-btn>
-      <v-btn
-        icon
-        to="/login"
-      >
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item-group>
+            <v-list-item key="createClip">
+              <v-list-item-icon>
+                <v-icon>mdi-content-cut</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content icon @click="moveToClipCreate">
+                切り抜き作成
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item disabled key="createClipList">
+              <v-list-item-icon>
+                <v-icon>mdi-paperclip</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>切り抜きリスト作成</v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-menu>
+      <v-btn icon to="/login">
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
@@ -125,6 +148,11 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'holocycle'
+    }
+  },
+  methods: {
+    moveToClipCreate () {
+      this.$router.push({ path: '/clips/create' })
     }
   }
 }

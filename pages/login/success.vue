@@ -13,10 +13,7 @@ export default {
     localStorage.setItem('token', token)
     this.$store.commit('login/add', token)
 
-    this.$router.push(
-      {
-        path: '/'
-      })
+    this.$router.push({ path: '/' })
   }
 }
 </script>
