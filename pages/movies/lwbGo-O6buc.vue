@@ -1,6 +1,7 @@
 <template>
   <Movies
-    url="https://www.youtube.com/embed/lwbGo-O6buc?rel=0&start=1320"
+    video-id="lwbGo-O6buc"
+    start=1320
     title="切り抜き動画を見る紫咲シオン"
     :chips="chips"
     descriptions="ここに動画の説明が入る。"

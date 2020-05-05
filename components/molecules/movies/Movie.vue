@@ -1,17 +1,15 @@
 <template>
   <div>
-    <iframe
-      width="560"
-      height="315"
-      :src="url"
-      frameborder="0"
+    <YoutubeIframe
+      :video-id="videoId"
       :allow="allow"
-      allowfullscreen
+      :start="start"
+      :end="end"
     />
     <div>
       <v-layout>
         <h2>{{ title }}</h2>
-        <v-spacer />
+        <v-spacer/>
         <v-btn icon>
           <v-icon color="yellow">
             mdi-star
@@ -59,12 +57,12 @@
           :key="item.title"
         >
           <v-list-item-avatar>
-            <v-img :src="item.avatar" />
+            <v-img :src="item.avatar"/>
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-subtitle v-html="item.name" />
-            <v-list-item-title v-html="item.comment" />
+            <v-list-item-subtitle v-html="item.name"/>
+            <v-list-item-title v-html="item.comment"/>
           </v-list-item-content>
         </v-list-item>
       </template>
@@ -73,11 +71,26 @@
 </template>
 
 <script>
+import YoutubeIframe from '../../atoms/youtube/YoutubeIframe'
+
 export default {
+  components: {
+    YoutubeIframe
+  },
   props: {
-    url: {
+    videoId: {
       type: String,
       required: true
+    },
+    start: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    end: {
+      type: Number,
+      required: false,
+      default: null
     },
     allow: {
       type: String,
@@ -97,7 +110,7 @@ export default {
       type: String,
       required: false,
       default: ''
-    },
+    }
   },
   data: () => ({
     message: '',

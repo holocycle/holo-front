@@ -2,7 +2,9 @@
   <v-row>
     <v-col cols="8">
       <Movie
-        :url="url"
+        :video-id="videoId"
+        :start="start"
+        :end="end"
         :title="title"
         :chips="chips"
         :descriptions="descriptions"
@@ -32,9 +34,19 @@ export default {
     SuggestMovies
   },
   props: {
-    url: {
+    videoId: {
       type: String,
       required: true
+    },
+    start: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    end: {
+      type: Number,
+      required: false,
+      default: null
     },
     title: {
       type: String,

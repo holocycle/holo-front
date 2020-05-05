@@ -1,6 +1,8 @@
 <template>
   <Movies
-    url="https://www.youtube.com/embed/xccH7xxG5zc?rel=0&start=2799&end=2871"
+    video-id="xccH7xxG5zc"
+    start=2799
+    end=2871
     title="このアプリのコンセプトを説明した動画"
     :chips="chips"
     descriptions="ここに動画の説明が入る。"
