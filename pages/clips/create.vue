@@ -59,6 +59,8 @@
 </template>
 
 <script>
+import { PostClipRequest } from 'holo-back'
+import { PostClipResponse } from 'holo-back/src/index'
 import ClipsApi from '../../lib/api/clips'
 import Movie from '../../components/molecules/movies/Movie'
 
@@ -77,16 +79,19 @@ export default {
   },
   methods: {
     createClip () {
+      const request = new PostClipRequest()
+      request.videoId = this.videoId
+      request.title = this.title
+      request.description = this.description
+      request.beginAt = this.beginAt
+      request.endAt = this.endAt
+
       ClipsApi.post(
-        this.videoId,
-        this.title,
-        this.description,
-        this.beginAt,
-        this.endAt
+        request
       ).then(
         (response) => {
-          this.result = response
-          this.$router.push({ path: '/clips/' + this.videoId })
+          const postClipResponse = PostClipResponse.createFrom(response.data)
+          this.$router.push({ path: '/clips/' + postClipResponse.clipId })
         }
       )
     }
