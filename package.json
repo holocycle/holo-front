@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
-    "holo-back": "^0.0.5",
+    "holo-back": "^0.0.9",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
