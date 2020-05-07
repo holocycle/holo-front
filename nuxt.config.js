@@ -30,7 +30,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/auth-localstorage', ssr: false }
+    { src: '~/plugins/auth-localstorage', ssr: false },
+    { src: '~/plugins/axios-accesser', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules

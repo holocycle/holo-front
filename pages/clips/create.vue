@@ -45,8 +45,8 @@
           <v-card-text>
             <Movie
               :video-id="videoId"
-              :start="beginAt"
-              :end="endAt"
+              :start="beginAt.number"
+              :end="endAt.number"
               :title="title"
               :chips="chips"
               :descriptions="description"
@@ -89,8 +89,7 @@ export default {
         request
       ).then(
         (response) => {
-          const postClipResponse = PostClipResponse.createFrom(response.data)
-          this.$router.push({ path: '/clips/' + postClipResponse.clipId })
+          this.$router.push({ path: '/clips/' + response.clipId })
         }
       )
     }
