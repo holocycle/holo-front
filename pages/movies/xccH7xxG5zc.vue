@@ -5,7 +5,7 @@
     end=2871
     title="このアプリのコンセプトを説明した動画"
     :chips="chips"
-    descriptions="ここに動画の説明が入る。"
+    description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"
   />

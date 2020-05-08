@@ -3,7 +3,7 @@
     video-id="9nD7aQ_cKAM"
     title="バレンタインキッス"
     :chips="chips"
-    descriptions="ここに動画の説明が入る。"
+    description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"
   />

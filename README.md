@@ -20,6 +20,9 @@ $ yarn start
 
 # generate static project
 $ yarn generate
+
+# upgrade holo-back module
+yarn upgrade holo-back
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

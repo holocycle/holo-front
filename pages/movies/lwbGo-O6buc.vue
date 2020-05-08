@@ -4,7 +4,7 @@
     start=1320
     title="切り抜き動画を見る紫咲シオン"
     :chips="chips"
-    descriptions="ここに動画の説明が入る。"
+    description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"
   />

@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { PostClipRequest, PostClipResponse } from 'holo-back'
+import { PostClipRequest } from 'holo-back'
 import ClipsApi from '../../lib/api/clips'
 import Movie from '../../components/molecules/movies/Movie'
 

@@ -1,10 +1,12 @@
 <template>
   <div>
     <Movies
-      :video-id="id"
-      title="バレンタインキッス"
+      :video-id="clip.videoId"
+      :title="clip.title"
       :chips="chips"
-      descriptions="ここに動画の説明が入る。"
+      :start="clip.beginAt"
+      :end="clip.endAt"
+      :description="clip.description"
       :related-movie-previews="relatedMoviePreviews"
       :recommended-movie-previews="recommendedMoviePreviews"
     />
@@ -12,6 +14,7 @@
 </template>
 <script>
 import Movies from '../../components/template/Movies'
+import ClipsApi from '../../lib/api/clips'
 
 export default {
   components: {
@@ -19,7 +22,7 @@ export default {
   },
   data () {
     return {
-      id: '',
+      clip: null,
       chips: [
         {
           name: '夏色まつり',
@@ -67,9 +70,11 @@ export default {
       ]
     }
   },
-  asyncData (ctx) {
+  async asyncData (ctx) {
+    const clipId = ctx.params.id
+    const { clip } = await ClipsApi.getByClipId(clipId)
     return {
-      id: ctx.params.id
+      clip
     }
   }
 }

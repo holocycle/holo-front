@@ -3,7 +3,7 @@
     video-id="X9zw0QF12Kc"
     title="サクラカゼ"
     :chips="chips"
-    descriptions="ここに動画の説明が入る。"
+    description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"
   />

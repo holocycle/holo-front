@@ -7,7 +7,7 @@
         :end="end"
         :title="title"
         :chips="chips"
-        :descriptions="descriptions"
+        :description="description"
       />
       <Comments/>
     </v-col>
@@ -60,7 +60,7 @@ export default {
       required: false,
       default: null
     },
-    descriptions: {
+    description: {
       type: String,
       required: false,
       default: ''

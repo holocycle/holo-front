@@ -1,15 +1,16 @@
-import { ListClipsRequest, ListClipsResponse, PostClipRequest, PostClipResponse } from 'holo-back'
+import {
+  GetClipResponse,
+  ListClipsRequest,
+  ListClipsResponse,
+  PostClipRequest,
+  PostClipResponse
+} from 'holo-back'
 import api from './helper/apiRequestHelper'
 
-export default class ClipsApiTs {
-  static get (): Promise<ListClipsResponse> {
+export default class ClipsApi {
+  static get (request: ListClipsRequest): Promise<ListClipsResponse> {
     const url = '/clips'
-    return api.get<null, ListClipsResponse>(url, null)
-  }
-
-  static getList (getClipRequest: ListClipsRequest): Promise<ListClipsResponse> {
-    const url = '/clips'
-    return api.get<ListClipsRequest, ListClipsResponse>(url, getClipRequest)
+    return api.get<ListClipsRequest, ListClipsResponse>(url, request)
   }
 
   static post (postClipRequest: PostClipRequest): Promise<PostClipResponse> {
@@ -17,5 +18,10 @@ export default class ClipsApiTs {
       '/clips',
       postClipRequest
     )
+  }
+
+  static getByClipId (clipId: string): Promise<GetClipResponse> {
+    const url = '/clips/' + clipId
+    return api.get<null, GetClipResponse>(url, null)
   }
 }
