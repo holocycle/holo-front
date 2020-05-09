@@ -9,7 +9,10 @@
         :chips="chips"
         :description="description"
       />
-      <Comments />
+      <Comments
+        :comments="comments"
+        v-on:sendComment="sendComment"
+      />
     </v-col>
     <v-col cols="4">
       <SuggestMovies
@@ -65,6 +68,11 @@ export default {
       required: false,
       default: ''
     },
+    comments: {
+      type: Array,
+      required: false,
+      default: null
+    },
     relatedMoviePreviews: {
       type: Array,
       required: true
@@ -76,6 +84,11 @@ export default {
   },
   data () {
     return {}
+  },
+  methods: {
+    sendComment (message) {
+      this.$emit('sendComment', message)
+    }
   }
 }
 </script>

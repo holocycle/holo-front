@@ -7,14 +7,18 @@
       :start="clip.beginAt"
       :end="clip.endAt"
       :description="clip.description"
+      :comments="comments"
+      v-on:sendComment="sendComment"
       :related-movie-previews="relatedMoviePreviews"
       :recommended-movie-previews="recommendedMoviePreviews"
     />
   </div>
 </template>
 <script>
+import { ListCommentsRequest, PostCommentRequest } from 'holo-back'
 import Movies from '../../components/template/Movies'
 import ClipsApi from '../../lib/api/clips'
+import CommentApi from '../../lib/api/comment'
 
 export default {
   components: {
@@ -23,13 +27,21 @@ export default {
   async asyncData (ctx) {
     const clipId = ctx.params.id
     const { clip } = await ClipsApi.getByClipId(clipId)
+
+    const request = new ListCommentsRequest()
+    request.limit = 20
+    request.orderBy = 'latest'
+    const { comments } = await CommentApi.getList(clipId, request)
+
     return {
-      clip
+      clip,
+      comments
     }
   },
   data () {
     return {
       clip: null,
+      comments: null,
       chips: [
         {
           name: '夏色まつり',
@@ -75,6 +87,23 @@ export default {
           subTitle: 'ここにタイトルが入る'
         }
       ]
+    }
+  },
+  methods: {
+    async sendComment (comment) {
+      const request = new PostCommentRequest()
+      request.content = comment
+      const postCommentResponse = await CommentApi.post(this.clip.id, request)
+      console.log('created. id: ' + postCommentResponse.commentId)
+
+      await this.refreshCommentField()
+    },
+    async refreshCommentField () {
+      const request = new ListCommentsRequest()
+      request.limit = 20
+      request.orderBy = 'latest'
+      const { comments } = await CommentApi.getList(this.clip.id, request)
+      this.comments = comments
     }
   }
 }
