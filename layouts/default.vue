@@ -16,7 +16,7 @@
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-item>
-          <v-divider v-else-if="item.divider" :key="index"/>
+          <v-divider v-else-if="item.divider" :key="index" />
           <v-subheader v-else-if="item.header" :key="item.header">
             {{ item.header }}
           </v-subheader>
@@ -28,15 +28,15 @@
       fixed
       app
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <nuxt-link to="/" tag="div">
         <v-icon>mdi-triangle</v-icon>
       </nuxt-link>
       <nuxt-link to="/" tag="div">
-        <v-toolbar-title to="/" v-text="title"/>
+        <v-toolbar-title to="/" v-text="title" />
       </nuxt-link>
-      <v-spacer/>
+      <v-spacer />
       <v-btn to="/help" icon>
         <v-icon>mdi-help-circle-outline</v-icon>
       </v-btn>
@@ -45,7 +45,8 @@
           <v-btn
             icon
             v-bind="attrs"
-            v-on="on">
+            v-on="on"
+          >
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </template>
@@ -60,7 +61,7 @@
                 切り抜き作成
               </v-list-item-content>
             </v-list-item>
-            <v-list-item disabled key="createClipList">
+            <v-list-item key="createClipList" disabled>
               <v-list-item-icon>
                 <v-icon>mdi-paperclip</v-icon>
               </v-list-item-icon>
@@ -75,7 +76,7 @@
     </v-app-bar>
     <v-content>
       <v-container>
-        <nuxt/>
+        <nuxt />
       </v-container>
     </v-content>
     <v-navigation-drawer

@@ -6,9 +6,9 @@
     <v-img
       :height="imageHeight"
       :src="imageUrl"
-    ></v-img>
+    />
     <v-card-text class="text--primary">
-      {{text}}
+      {{ text }}
     </v-card-text>
   </v-card>
 </template>

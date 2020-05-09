@@ -6,7 +6,7 @@
       :key="moviePreview.url"
       :to="moviePreview.to"
     >
-      <v-img width="0" :src="moviePreview.url"></v-img>
+      <v-img width="0" :src="moviePreview.url" />
       <v-list-item-content>
         <v-list-item-subtitle>{{ moviePreview.subTitle }}</v-list-item-subtitle>
         <v-list-item-title>{{ moviePreview.title }}</v-list-item-title>

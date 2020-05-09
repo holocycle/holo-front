@@ -22,17 +22,17 @@
               v-model.number="beginAt"
               label="開始時間(秒)"
             />
-            <v-spacer/>
+            <v-spacer />
             <v-text-field
               v-model.number="endAt"
               label="終了時間(秒)"
             />
           </v-layout>
           <v-layout>
-            <v-spacer/>
+            <v-spacer />
             <v-btn
-              @click="createClip"
               color="primary"
+              @click="createClip"
             >
               create
             </v-btn>

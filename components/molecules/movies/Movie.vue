@@ -9,7 +9,7 @@
     <div>
       <v-layout>
         <h2>{{ title }}</h2>
-        <v-spacer/>
+        <v-spacer />
         <v-btn icon>
           <v-icon color="yellow">
             mdi-star

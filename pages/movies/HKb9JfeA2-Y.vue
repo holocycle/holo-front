@@ -1,7 +1,7 @@
 <template>
   <Movies
     video-id="HKb9JfeA2-Y"
-    start=771
+    start="771"
     title="中笑いのくだり"
     :chips="chips"
     description="ここに動画の説明が入る。"

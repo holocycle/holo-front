@@ -6,7 +6,7 @@ youtubeの埋め込みプレーヤーを表す
   <iframe
     width="560"
     height="315"
-    rel=0
+    rel="0"
     :src="url"
     frameborder="0"
     :allow="allow"

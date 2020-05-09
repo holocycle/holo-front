@@ -2,7 +2,7 @@
   <div>
     これはサンプル実装です
     ctx.params.id : {{ id }}
-    <LiverDetail/>
+    <LiverDetail />
   </div>
 </template>
 

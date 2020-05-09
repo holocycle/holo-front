@@ -7,7 +7,7 @@
             ログイン
           </v-card-title>
           <v-card-text>
-            <GoogleLoginButton/>
+            <GoogleLoginButton />
           </v-card-text>
         </v-card>
       </v-row>

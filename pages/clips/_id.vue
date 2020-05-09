@@ -20,6 +20,13 @@ export default {
   components: {
     Movies
   },
+  async asyncData (ctx) {
+    const clipId = ctx.params.id
+    const { clip } = await ClipsApi.getByClipId(clipId)
+    return {
+      clip
+    }
+  },
   data () {
     return {
       clip: null,
@@ -68,13 +75,6 @@ export default {
           subTitle: 'ここにタイトルが入る'
         }
       ]
-    }
-  },
-  async asyncData (ctx) {
-    const clipId = ctx.params.id
-    const { clip } = await ClipsApi.getByClipId(clipId)
-    return {
-      clip
     }
   }
 }

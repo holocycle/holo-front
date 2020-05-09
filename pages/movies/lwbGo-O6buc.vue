@@ -1,7 +1,7 @@
 <template>
   <Movies
     video-id="lwbGo-O6buc"
-    start=1320
+    start="1320"
     title="切り抜き動画を見る紫咲シオン"
     :chips="chips"
     description="ここに動画の説明が入る。"

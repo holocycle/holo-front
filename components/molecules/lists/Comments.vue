@@ -29,12 +29,12 @@
           :key="comment.title"
         >
           <v-list-item-avatar>
-            <v-img :src="comment.avatar"/>
+            <v-img :src="comment.avatar" />
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-subtitle v-html="comment.name"/>
-            <v-list-item-title v-html="comment.comment"/>
+            <v-list-item-subtitle v-html="comment.name" />
+            <v-list-item-title v-html="comment.comment" />
           </v-list-item-content>
         </v-list-item>
       </template>

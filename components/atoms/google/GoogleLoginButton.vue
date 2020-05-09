@@ -1,8 +1,8 @@
 <template>
   <v-img
     max-width="191px"
-    @click="click()"
     src="/google/1x/btn_google_signin_dark_normal_web.png"
+    @click="click()"
   />
 </template>
 

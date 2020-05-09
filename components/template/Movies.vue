@@ -9,7 +9,7 @@
         :chips="chips"
         :description="description"
       />
-      <Comments/>
+      <Comments />
     </v-col>
     <v-col cols="4">
       <SuggestMovies

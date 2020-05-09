@@ -1,6 +1,6 @@
 <template>
   <p class="custom-description text-none">
-    <slot/>
+    <slot />
   </p>
 </template>
 
