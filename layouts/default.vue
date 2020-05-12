@@ -1,33 +1,22 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      app
-    >
+    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" app>
       <v-list>
         <template v-for="(item, index) in items">
           <v-list-item v-if="item.action" :key="item.title" :to="item.action">
-            <v-list-tile-action>
+            <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile-content>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
           </v-list-item>
           <v-divider v-else-if="item.divider" :key="index" />
-          <v-subheader v-else-if="item.header" :key="item.header">
-            {{ item.header }}
-          </v-subheader>
+          <v-subheader v-else-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
+    <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <nuxt-link to="/" tag="div">
@@ -42,11 +31,7 @@
       </v-btn>
       <v-menu>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
+          <v-btn icon v-bind="attrs" v-on="on">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </template>
@@ -57,9 +42,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-content-cut</v-icon>
               </v-list-item-icon>
-              <v-list-item-content icon @click="moveToClipCreate">
-                切り抜き作成
-              </v-list-item-content>
+              <v-list-item-content icon @click="moveToClipCreate">切り抜き作成</v-list-item-content>
             </v-list-item>
             <v-list-item key="createClipList" disabled>
               <v-list-item-icon>
@@ -79,27 +62,17 @@
         <nuxt />
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
+    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon light>mdi-repeat</v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer
-      :fixed="fixed"
-      app
-    >
+    <v-footer :fixed="fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
