@@ -85,7 +85,16 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+      title: 'holocycle'
+    }
+  },
+  computed: {
+    items () {
+      // items on left side menu
+      return [
         {
           action: '/',
           title: 'ページトップ',
@@ -93,16 +102,7 @@ export default {
         },
         { divider: true },
         { header: 'ライバー一覧' },
-        {
-          action: '/livers/marine',
-          title: '宝鐘マリン',
-          icon: 'mdi-home'
-        },
-        {
-          action: '/livers/miko',
-          title: 'さくらみこ',
-          icon: 'mdi-home'
-        },
+        ...this.liverItems,
         { divider: true },
         { header: '動画' },
         {
@@ -117,11 +117,15 @@ export default {
           title: 'ユーザ設定',
           icon: 'mdi-groups'
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'holocycle'
+      ]
+    },
+    liverItems () {
+      const livers = this.$store.state.liver.list // : Array<Liver>
+      return livers.map(liver => ({
+        action: '/livers/' + liver.id,
+        title: liver.name,
+        icon: 'mdi-home'
+      }))
     }
   },
   methods: {
