@@ -34,10 +34,10 @@ export default {
       type: String,
       required: false,
       default: null
-    },
-    moviePreviews: {
-      type: Array,
-      required: true
+    // },
+    // moviePreviews: {
+    //   type: Array,
+    //   required: false
     }
   },
   data () {

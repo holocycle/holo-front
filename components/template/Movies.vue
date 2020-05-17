@@ -2,10 +2,16 @@
   <v-row>
     <v-col cols="8">
       <Movie
-        :url="url"
+        :video-id="videoId"
+        :start="start"
+        :end="end"
         :title="title"
         :chips="chips"
-        :descriptions="descriptions"
+        :description="description"
+      />
+      <Comments
+        :comments="comments"
+        v-on:sendComment="sendComment"
       />
     </v-col>
     <v-col cols="4">
@@ -25,16 +31,28 @@
 <script>
 import Movie from '../molecules/movies/Movie'
 import SuggestMovies from '../molecules/lists/SuggestMovies'
+import Comments from '../molecules/lists/Comments'
 
 export default {
   components: {
     Movie,
-    SuggestMovies
+    SuggestMovies,
+    Comments
   },
   props: {
-    url: {
+    videoId: {
       type: String,
       required: true
+    },
+    start: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    end: {
+      type: Number,
+      required: false,
+      default: null
     },
     title: {
       type: String,
@@ -45,10 +63,15 @@ export default {
       required: false,
       default: null
     },
-    descriptions: {
+    description: {
       type: String,
       required: false,
       default: ''
+    },
+    comments: {
+      type: Array,
+      required: false,
+      default: null
     },
     relatedMoviePreviews: {
       type: Array,
@@ -61,6 +84,11 @@ export default {
   },
   data () {
     return {}
+  },
+  methods: {
+    sendComment (message) {
+      this.$emit('sendComment', message)
+    }
   }
 }
 </script>

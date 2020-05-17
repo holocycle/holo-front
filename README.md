@@ -1,5 +1,7 @@
 # holocycle
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8698db9f-16c7-4043-b0b8-dc419baf1a67/deploy-status)](https://app.netlify.com/sites/holocycle/deploys)
+
 > My wonderful Nuxt.js project
 
 ## Build Setup
@@ -18,6 +20,9 @@ $ yarn start
 
 # generate static project
 $ yarn generate
+
+# upgrade holo-back module
+yarn upgrade holo-back
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

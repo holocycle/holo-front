@@ -1,12 +1,10 @@
 <template>
   <div>
-    <iframe
-      width="560"
-      height="315"
-      :src="url"
-      frameborder="0"
+    <YoutubeIframe
+      :video-id="videoId"
       :allow="allow"
-      allowfullscreen
+      :start="start"
+      :end="end"
     />
     <div>
       <v-layout>
@@ -28,56 +26,33 @@
       </v-icon>
       {{ chip.name }}
     </v-chip>
-    <p class="text-justify">
-      {{ descriptions }}
-    </p>
-    <v-list three-line>
-      <template v-for="(item, index) in items">
-        <v-subheader
-          v-if="item.header"
-          :key="item.header"
-          v-text="item.header"
-        />
-
-        <v-divider
-          v-else-if="item.divider"
-          :key="index"
-          :inset="item.inset"
-        />
-        <v-text-field
-          v-else-if="item.sendComment"
-          :key="item.sendComment"
-          v-model="message"
-          :append-outer-icon="message ? 'mdi-send' : 'mdi-send'"
-          filled
-          label="comment"
-          type="text"
-        />
-
-        <v-list-item
-          v-else
-          :key="item.title"
-        >
-          <v-list-item-avatar>
-            <v-img :src="item.avatar" />
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-subtitle v-html="item.name" />
-            <v-list-item-title v-html="item.comment" />
-          </v-list-item-content>
-        </v-list-item>
-      </template>
-    </v-list>
+    <TextWithLineBreaks>{{ descriptions }}</TextWithLineBreaks>
   </div>
 </template>
 
 <script>
+import YoutubeIframe from '../../atoms/youtube/YoutubeIframe'
+import TextWithLineBreaks from '../../atoms/textField/TextWithLineBreaks'
+
 export default {
+  components: {
+    YoutubeIframe,
+    TextWithLineBreaks
+  },
   props: {
-    url: {
+    videoId: {
       type: String,
       required: true
+    },
+    start: {
+      type: Number,
+      required: false,
+      default: null
+    },
+    end: {
+      type: Number,
+      required: false,
+      default: null
     },
     allow: {
       type: String,
@@ -97,46 +72,7 @@ export default {
       type: String,
       required: false,
       default: ''
-    },
-  },
-  data: () => ({
-    message: '',
-    items: [
-      { header: '5件のコメント' },
-      { sendComment: 'comment' },
-      {
-        divider: true,
-        inset: true
-      },
-      {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-        name: 'user1',
-        comment: '1get'
-      },
-      {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-        name: 'user2',
-        comment: 'てえてえ'
-      },
-      {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-        name: 'user3',
-        comment: 'てえてえ'
-      },
-      {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-        name: 'user4',
-        comment: 'てえてえ'
-      },
-      {
-        avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-        name: 'user5',
-        comment: 'てえてえ'
-      }
-    ]
-  })
+    }
+  }
 }
 </script>
-
-<style>
-</style>

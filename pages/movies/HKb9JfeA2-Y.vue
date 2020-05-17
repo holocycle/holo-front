@@ -1,9 +1,10 @@
 <template>
   <Movies
-    url="https://www.youtube.com/embed/HKb9JfeA2-Y?rel=0&start=771"
+    video-id="HKb9JfeA2-Y"
+    start="771"
     title="中笑いのくだり"
     :chips="chips"
-    descriptions="ここに動画の説明が入る。"
+    description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"
   />

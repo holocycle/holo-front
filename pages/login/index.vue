@@ -7,7 +7,7 @@
             ログイン
           </v-card-title>
           <v-card-text>
-            <GoogleLoginButton/>
+            <GoogleLoginButton />
           </v-card-text>
         </v-card>
       </v-row>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import GoogleLoginButton from '../components/atoms/google/GoogleLoginButton'
+import GoogleLoginButton from '../../components/atoms/google/GoogleLoginButton'
 
 export default {
   components: {
