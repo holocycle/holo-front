@@ -2,11 +2,13 @@
 <template>
   <div>
     <LiverDetail
-      :name="name"
+      :name="liver.name"
       :channel-url="channelUrl"
-      avatar-url="http://yt3.ggpht.com/a/AATXAJxeNWA_oVxR5sKIs9hQotV_M9zS3NtgqB3tcw=s88-c-k-c0xffffffff-no-rj-mo"
-      banner-url="https://yt3.ggpht.com/m3-S3Ki1hhUsaVjCASbseVicnGGEBFwSLxhTwb0H-aJ-lfawoxqLtEPK8qE8ZMYpEDz7LvS_7w=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"
-      :channel-subscriber="1000000"
+      :avatar-url="liver.channel.mediumThumbnailUrl"
+      :banner-url="liver.channel.mediumBannerUrl"
+      :channel-subscriber="liver.channel.subscriberCount"
+      :latest-movies="latestMovies"
+      :popular-movies="popularMovies"
     />
   </div>
 </template>
@@ -24,12 +26,45 @@ export default {
     const { liver } = await LiverApi.getBy(liverId)
     return {
       liver,
-      name: liver.name
     }
   },
   computed: {
     channelUrl () {
-      return 'https://www.youtube.com/channel/' + this.liver.channelId
+      return 'https://www.youtube.com/channel/' + this.liver.channel.id
+    }
+  },
+  data() {
+    return {
+      latestMovies: [
+        {
+          to: '/movies/X9zw0QF12Kc',
+          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
+          text: '【歌ってみた】サクラカゼ'
+        }, {
+          to: '/movies/9nD7aQ_cKAM',
+          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
+          text: '【歌ってみた】バレンタインキッス'
+        }, {
+          to: '/movies/xccH7xxG5zc',
+          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
+          text: 'コンセプト'
+        }
+      ],
+      popularMovies: [
+        {
+          to: '/movies/X9zw0QF12Kc',
+          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
+          text: '【歌ってみた】サクラカゼ'
+        }, {
+          to: '/movies/9nD7aQ_cKAM',
+          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
+          text: '【歌ってみた】バレンタインキッス'
+        }, {
+          to: '/movies/xccH7xxG5zc',
+          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
+          text: 'コンセプト'
+        }
+      ]
     }
   }
 }
