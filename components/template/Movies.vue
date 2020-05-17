@@ -11,7 +11,7 @@
       />
       <Comments
         :comments="comments"
-        v-on:sendComment="sendComment"
+        @sendComment="sendComment"
       />
     </v-col>
     <v-col cols="4">

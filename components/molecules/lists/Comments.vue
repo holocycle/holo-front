@@ -16,8 +16,9 @@
     </v-list-item>
     <v-divider />
     <v-list-item
+      v-for="(comment, index) in comments"
       :key="index + comment.content + comment.user.name"
-      v-for="(comment, index) in comments">
+    >
       <v-list-item-avatar>
         <v-img :src="comment.user.iconUrl" />
       </v-list-item-avatar>

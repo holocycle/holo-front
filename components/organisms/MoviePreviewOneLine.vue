@@ -7,16 +7,18 @@ lg: 4 column
 <template>
   <div>
     <div>
-      <h2 v-if="title">{{ title }}</h2>
+      <h2 v-if="title">
+        {{ title }}
+      </h2>
     </div>
     <v-row>
       <v-col
+        v-for="moviePreview in moviePreviews"
+        :key="moviePreview.imageUrl"
         xs="8"
         sm="6"
         md="4"
         lg="3"
-        v-for="moviePreview in moviePreviews"
-        :key="moviePreview.imageUrl"
       >
         <MoviePreviewCard
           :to="moviePreview.to"

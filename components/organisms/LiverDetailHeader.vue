@@ -18,7 +18,9 @@
       </v-col>
       <v-spacer />
       <v-col cols="auto" align-self="center">
-        <v-btn color="#FF0000" :href="channelUrl">YouTubeチャンネル</v-btn>
+        <v-btn color="#FF0000" :href="channelUrl">
+          YouTubeチャンネル
+        </v-btn>
       </v-col>
     </v-row>
   </div>
@@ -53,7 +55,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
     }
   }

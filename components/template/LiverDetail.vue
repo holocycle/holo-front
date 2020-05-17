@@ -2,13 +2,13 @@
   <div>
     <LiverDetailHeader
       :name="name"
-      :channelUrl="channelUrl"
-      :avatarUrl="avatarUrl"
-      :bannerUrl="bannerUrl"
-      :channelSubscriber="channelSubscriber"
+      :channel-url="channelUrl"
+      :avatar-url="avatarUrl"
+      :banner-url="bannerUrl"
+      :channel-subscriber="channelSubscriber"
     />
-    <MoviePreviewOneLine title="最近の動画" :moviePreviews="latestMovies" />
-    <MoviePreviewOneLine title="人気の動画" :moviePreviews="popularMovies" />
+    <MoviePreviewOneLine title="最近の動画" :movie-previews="latestMovies" />
+    <MoviePreviewOneLine title="人気の動画" :movie-previews="popularMovies" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import MoviePreviewOneLine from '../organisms/MoviePreviewOneLine'
 export default {
   components: {
     LiverDetailHeader,
-    MoviePreviewOneLine,
+    MoviePreviewOneLine
   },
   props: {
     name: {
@@ -49,7 +49,7 @@ export default {
       type: Array,
       required: true
     }
-  },
+  }
 }
 </script>
 

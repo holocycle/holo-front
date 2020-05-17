@@ -12,7 +12,9 @@
             </v-list-item-content>
           </v-list-item>
           <v-divider v-else-if="item.divider" :key="index" />
-          <v-subheader v-else-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
+          <v-subheader v-else-if="item.header" :key="item.header">
+            {{ item.header }}
+          </v-subheader>
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -42,7 +44,9 @@
               <v-list-item-icon>
                 <v-icon>mdi-content-cut</v-icon>
               </v-list-item-icon>
-              <v-list-item-content icon @click="moveToClipCreate">切り抜き作成</v-list-item-content>
+              <v-list-item-content icon @click="moveToClipCreate">
+                切り抜き作成
+              </v-list-item-content>
             </v-list-item>
             <v-list-item key="createClipList" disabled>
               <v-list-item-icon>
@@ -66,7 +70,9 @@
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>mdi-repeat</v-icon>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>

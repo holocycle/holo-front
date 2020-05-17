@@ -25,15 +25,10 @@ export default {
     const liverId = ctx.params.id
     const { liver } = await LiverApi.getBy(liverId)
     return {
-      liver,
+      liver
     }
   },
-  computed: {
-    channelUrl () {
-      return 'https://www.youtube.com/channel/' + this.liver.channel.id
-    }
-  },
-  data() {
+  data () {
     return {
       latestMovies: [
         {
@@ -65,6 +60,11 @@ export default {
           text: 'コンセプト'
         }
       ]
+    }
+  },
+  computed: {
+    channelUrl () {
+      return 'https://www.youtube.com/channel/' + this.liver.channel.id
     }
   }
 }
