@@ -64,11 +64,11 @@
     <v-content>
       <v-container>
         <v-row>
-          <v-col xs="0" sm="1" md="1" lg="2" />
-          <v-col xs="12" sm="10" md="10" lg="8">
+          <v-col xs="0" sm="0" md="1" lg="1" xl="2" />
+          <v-col xs="12" sm="12" md="10" lg="10" xl="8">
             <nuxt />
           </v-col>
-          <v-col xs="0" sm="1" md="1" lg="2" />
+          <v-col xs="0" sm="0" md="1" lg="1" xl="2" />
         </v-row>
       </v-container>
     </v-content>
