@@ -1,17 +1,29 @@
+<!--
+xs: 1 column
+sm: 2 column
+md: 3 column
+lg: 4 column
+-->
 <template>
   <div>
-    <h2 v-if="title">
-      {{ title }}
-    </h2>
+    <div>
+      <h2 v-if="title">{{ title }}</h2>
+    </div>
     <v-row>
-      <div v-for="moviePreview in moviePreviews" :key="moviePreview.imageUrl">
+      <v-col
+        xs="8"
+        sm="6"
+        md="4"
+        lg="3"
+        v-for="moviePreview in moviePreviews"
+        :key="moviePreview.imageUrl"
+      >
         <MoviePreviewCard
           :to="moviePreview.to"
-          image-height="200px"
           :image-url="moviePreview.imageUrl"
           :text="moviePreview.text"
         />
-      </div>
+      </v-col>
     </v-row>
   </div>
 </template>

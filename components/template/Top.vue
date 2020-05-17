@@ -1,25 +1,8 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <MoviePreviewOneLine
-        title="人気の動画一覧"
-        :movie-previews="popularMoviePreviews"
-      />
-      <br>
-      <MoviePreviewOneLine
-        title="お気に入りの動画一覧"
-        :movie-previews="favoriteMoviePreviews"
-      />
-    </v-flex>
-  </v-layout>
+  <div>
+    <MoviePreviewOneLine title="人気の動画一覧" :movie-previews="popularMoviePreviews" />
+    <MoviePreviewOneLine title="お気に入りの動画一覧" :movie-previews="favoriteMoviePreviews" />
+  </div>
 </template>
 
 <script>
