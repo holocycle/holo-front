@@ -15,7 +15,7 @@ lg: 4 column
       <v-col
         v-for="moviePreview in moviePreviews"
         :key="moviePreview.imageUrl"
-        xs="8"
+        xs="12"
         sm="6"
         md="4"
         lg="3"
