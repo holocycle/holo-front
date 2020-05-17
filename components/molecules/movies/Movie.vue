@@ -2,7 +2,6 @@
   <div>
     <YoutubeIframe
       :video-id="videoId"
-      :allow="allow"
       :start="start"
       :end="end"
     />
@@ -53,11 +52,6 @@ export default {
       type: Number,
       required: false,
       default: null
-    },
-    allow: {
-      type: String,
-      required: false,
-      default: 'accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture'
     },
     title: {
       type: String,

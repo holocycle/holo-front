@@ -31,7 +31,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/auth-localstorage', ssr: false },
-    { src: '~/plugins/axios-accesser' }
+    { src: '~/plugins/axios-accesser' },
+    { src: '~/plugins/vue-youtube' }
   ],
   /*
   ** Nuxt.js dev-modules

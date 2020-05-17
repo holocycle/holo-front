@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2>切り抜きを作成する</h2>
-    {{ result }}
     <v-row>
       <v-col cols="4">
         <v-form>
@@ -9,47 +8,64 @@
             v-model="videoId"
             label="動画ID"
           />
-          <v-text-field
-            v-model="title"
-            label="タイトル"
-          />
-          <v-textarea
-            v-model="description"
-            label="詳細"
-          />
-          <v-layout>
-            <v-text-field
-              v-model.number="beginAt"
-              label="開始時間(秒)"
-            />
+          <v-row>
+            <v-col cols="12">
+              <v-row>
+                <v-col cols="8">
+                  <v-text-field
+                    v-model="start"
+                    :disabled="canSetStart"
+                    label="開始時間(秒)"
+                  ></v-text-field>
+                </v-col>
+                <v-spacer />
+                <v-col cols="4">
+                  <v-btn @click="setStart" :disabled="canSetStart">
+                    <v-icon color="yellow">mdi-ray-start</v-icon>
+                    開始
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-col>
+            <v-col cols="12">
+              <v-row>
+                <v-col cols="8">
+                  <v-text-field
+                    v-model="end"
+                    :disabled="canSetEnd"
+                    label="終了時間(秒)"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="4">
+                  <v-btn @click="setEnd" :disabled="canSetEnd">
+                    終了
+                    <v-icon color="yellow">mdi-ray-end</v-icon>
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-col>
+          </v-row>
+          <v-row>
             <v-spacer />
-            <v-text-field
-              v-model.number="endAt"
-              label="終了時間(秒)"
-            />
-          </v-layout>
-          <v-layout>
-            <v-spacer />
-            <v-btn
-              color="primary"
-              @click="createClip"
-            >
-              create
-            </v-btn>
-          </v-layout>
+            <v-col>
+              <v-btn
+                color="primary"
+                :disabled="canCreateClip"
+                @click="confirmClip"
+              >
+                タイトル/詳細入力
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-form>
       </v-col>
       <v-col cols="8">
         <v-card>
           <v-card-title>プレビュー</v-card-title>
           <v-card-text>
-            <Movie
+            <youtube
+              ref="youtube"
               :video-id="videoId"
-              :start="beginAt.number"
-              :end="endAt.number"
-              :title="title"
-              :chips="chips"
-              :descriptions="description"
             />
           </v-card-text>
         </v-card>
@@ -59,39 +75,67 @@
 </template>
 
 <script>
-import { PostClipRequest } from 'holo-back'
-import ClipsApi from '../../lib/api/clips'
-import Movie from '../../components/molecules/movies/Movie'
-
 export default {
-  components: { Movie },
+  asyncData (ctx) {
+    const query = ctx.query
+    const canSet = query.videoId == null ? 'disabled' : null
+    return {
+      videoId: query.videoId,
+      start: query.start,
+      end: query.end,
+      canSetStart: canSet,
+      canSetEnd: canSet,
+      canCreateClip: canSet
+    }
+  },
   data () {
     return {
       videoId: '',
+      start: 0,
+      end: -1,
+      canSetStart: null,
+      canSetEnd: null,
+      canCreateClip: null,
       title: 'タイトルをここに記載',
       description: '詳細をここに記載\n改行も入る',
       chips: [],
-      beginAt: 0,
-      endAt: 0,
-      result: ''
+      canStart: null
+    }
+  },
+  computed: {
+    player () {
+      return this.$refs.youtube.player
+    }
+  },
+  watch: {
+    videoId (val) {
+      if (val !== '') {
+        this.canSetStart = null
+      }
     }
   },
   methods: {
-    createClip () {
-      const request = new PostClipRequest()
-      request.videoId = this.videoId
-      request.title = this.title
-      request.description = this.description
-      request.beginAt = this.beginAt
-      request.endAt = this.endAt
-
-      ClipsApi.post(
-        request
-      ).then(
-        (response) => {
-          this.$router.push({ path: '/clips/' + response.clipId })
-        }
-      )
+    async setStart () {
+      this.canSetEnd = null
+      const currentTime = await this.player.getCurrentTime()
+      this.start = Math.floor(currentTime) // 切り捨ての値
+    },
+    async setEnd () {
+      this.canCreateClip = null
+      const currentTime = await this.player.getCurrentTime()
+      this.end = Math.ceil(currentTime) // 切り上げの値
+      this.player.stopVideo()
+    },
+    confirmClip () {
+      this.$router.push({
+        path: '/clips/confirm',
+        query:
+          {
+            videoId: this.videoId,
+            start: this.start,
+            end: this.end
+          }
+      })
     }
   }
 }
