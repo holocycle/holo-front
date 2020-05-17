@@ -8,9 +8,9 @@
       :end="clip.endAt"
       :description="clip.description"
       :comments="comments"
-      v-on:sendComment="sendComment"
       :related-movie-previews="relatedMoviePreviews"
       :recommended-movie-previews="recommendedMoviePreviews"
+      @sendComment="sendComment"
     />
   </div>
 </template>

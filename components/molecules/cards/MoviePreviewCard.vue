@@ -1,10 +1,8 @@
 <template>
   <v-card
-    max-width="400"
     :to="to"
   >
     <v-img
-      :height="imageHeight"
       :src="imageUrl"
     />
     <v-card-text class="text--primary">
@@ -20,12 +18,6 @@ export default {
     to: {
       type: String,
       required: true
-    },
-    // cardに表示させる画像情報
-    imageHeight: {
-      type: String,
-      required: false,
-      default: '200px'
     },
     imageUrl: {
       type: String,
