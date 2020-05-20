@@ -127,7 +127,7 @@ export default {
         {
           action: '/',
           title: 'ユーザ設定',
-          icon: 'mdi-groups'
+          icon: 'fas fa-cog'
         }
       ]
     },
