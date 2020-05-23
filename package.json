@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
-    "holo-back": "^0.1.1",
+    "holo-back": "^0.2.1",
     "nuxt": "^2.0.0",
     "vue-youtube": "^1.4.0"
   },
