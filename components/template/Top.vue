@@ -1,7 +1,7 @@
 <template>
   <div>
-    <MoviePreviewOneLine title="人気の動画一覧" :movie-previews="popularMoviePreviews" />
-    <MoviePreviewOneLine title="お気に入りの動画一覧" :movie-previews="favoriteMoviePreviews" />
+    <MoviePreviewOneLine title="人気の切り抜き一覧" :movie-previews="popularClipPreviews" />
+    <MoviePreviewOneLine title="お気に入りの動画一覧" :movie-previews="favoriteClipPreviews" />
   </div>
 </template>
 
@@ -13,48 +13,13 @@ export default {
     MoviePreviewOneLine
   },
   props: {
-    title: {
-      type: String,
-      required: false,
-      default: null
-    // },
-    // moviePreviews: {
-    //   type: Array,
-    //   required: false
-    }
-  },
-  data () {
-    return {
-      popularMoviePreviews: [
-        {
-          to: '/movies/X9zw0QF12Kc',
-          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
-          text: '【歌ってみた】サクラカゼ'
-        }, {
-          to: '/movies/9nD7aQ_cKAM',
-          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
-          text: '【歌ってみた】バレンタインキッス'
-        }, {
-          to: '/movies/xccH7xxG5zc',
-          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
-          text: 'コンセプト'
-        }
-      ],
-      favoriteMoviePreviews: [
-        {
-          to: '/movies/X9zw0QF12Kc',
-          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
-          text: '【歌ってみた】サクラカゼ'
-        }, {
-          to: '/movies/9nD7aQ_cKAM',
-          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
-          text: '【歌ってみた】バレンタインキッス'
-        }, {
-          to: '/movies/xccH7xxG5zc',
-          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
-          text: 'コンセプト'
-        }
-      ]
+    popularClipPreviews: {
+      type: Array,
+      required: true,
+    },
+    favoriteClipPreviews: {
+      type: Array,
+      required: true,
     }
   }
 }
