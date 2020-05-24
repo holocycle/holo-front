@@ -1,7 +1,7 @@
 <template>
   <div>
     <Movies
-      :video-id="clip.videoId"
+      :video-id="clip.video.id"
       :title="clip.title"
       :chips="chips"
       :start="clip.beginAt"
