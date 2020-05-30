@@ -8,6 +8,18 @@
   </v-container>
 </template>
 <script>
+import UserApi from '../../lib/api/users'
+
+export default {
+  async asyncData () {
+    const { loginUser } = await UserApi.getUsersMe()
+    console.log(loginUser)
+    return {
+      loginUser
+    }
+  }
+}
+
 </script>
 <style>
 </style>
