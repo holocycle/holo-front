@@ -32,7 +32,8 @@ export default {
   plugins: [
     { src: '~/plugins/auth-localstorage', ssr: false },
     { src: '~/plugins/axios-accesser' },
-    { src: '~/plugins/vue-youtube' }
+    { src: '~/plugins/vue-youtube' },
+    { src: '~/plugins/vuetify', ssr: false }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -87,7 +88,8 @@ export default {
   },
   env: {
     API_URL: process.env.API_URL || 'http://localhost:8080',
-    LOGIN_URL: process.env.LOGIN_URL || 'http://localhost:8080/login/google?callback=http://localhost:3000/login/success'
+    LOGIN_URL: process.env.LOGIN_URL || 'http://localhost:8080/login/google?callback=http://localhost:3000/login/success',
+    GOOGLE_PERSONAL_INFO_URL: process.env.GOOGLE_PERSONAL_INFO_URL || 'https://myaccount.google.com/personal-info',
   }
   // router: {
   //   middleware: 'auth-cookie'

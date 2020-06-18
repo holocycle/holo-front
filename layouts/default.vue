@@ -125,9 +125,14 @@ export default {
         { divider: true },
         { header: '設定' },
         {
-          action: '/',
+          action: '/users',
+          title: 'ユーザ一覧',
+          icon: 'mdi-account-multiple'
+        },
+        {
+          action: '/settings/me',
           title: 'ユーザ設定',
-          icon: 'mdi-groups'
+          icon: 'fas fa-cog'
         }
       ]
     },

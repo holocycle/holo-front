@@ -44,6 +44,10 @@ export default {
     return request<req, res>('GET', url, params)
   },
 
+  getWithToken<req, res> (url: string, params: req): Promise<res> {
+    return requestWithToken<req, res>('GET', url, params)
+  },
+
   post<req, res> (url: string, params: req): Promise<res> {
     return request<req, res>('POST', url, params)
   },
