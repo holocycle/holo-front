@@ -801,6 +801,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fortawesome/fontawesome-free@^5.13.0":
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz#fcb113d1aca4b471b709e8c9c168674fbd6e06d9"
+  integrity sha512-xKOeQEl5O47GPZYIMToj6uuA2syyFlq9EMSl2ui0uytjY9xbe8XS0pexNWmxrdcCyNGyDmLyYw5FtKsalBUeOg==
+
 "@nuxt/babel-preset-app@2.12.2":
   version "2.12.2"
   resolved "https://registry.yarnpkg.com/@nuxt/babel-preset-app/-/babel-preset-app-2.12.2.tgz#0e87c4f4f578868e74f6fa9e2a38cace5c77dac8"
@@ -4316,10 +4321,10 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-holo-back@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/holo-back/-/holo-back-0.2.1.tgz#d2fc7f84e6b68f2eae1f9bb00e7f6f0cc36516b5"
-  integrity sha512-FeAg+fus5x4uCSZVHSWTucV/Rhy14nO4K08g8JKFPLTssIuX+nh24IjgixR+3iOmGZjoU9hjK3MZ8YeVHk2ZCA==
+holo-back@^0.2.2:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/holo-back/-/holo-back-0.2.3.tgz#6001b3860f51c03dd2b508d4b85f9a6578833db1"
+  integrity sha512-pjOdkgi8rRW9h47TYBO8FNLZ5ha4LoqagCJ5P7+Hzt0JMVqHP1HR0Ryd/O9g4aYRS6oRGiHpOIP+I686eLXfEQ==
 
 hoopy@^0.1.4:
   version "0.1.4"

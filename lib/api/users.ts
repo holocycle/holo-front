@@ -2,15 +2,15 @@ import {
   GetLoginUserRequest,
   GetLoginUserResponse,
   GetUserFavoritesResponse,
-  GetUserResponse,
+  GetUserResponse, ListUserRequest,
   ListUserResponse
 } from 'holo-back'
 import api from './helper/apiRequestHelper'
 
 export default class UserApi {
-  static getUsers (): Promise<ListUserResponse> {
+  static getUsers (listUserRequest: ListUserRequest): Promise<ListUserResponse> {
     const path = '/users'
-    return api.get<null, ListUserResponse>(path, null)
+    return api.get<ListUserRequest, ListUserResponse>(path, listUserRequest)
   }
 
   static getUsersMe (): Promise<GetLoginUserRequest> {

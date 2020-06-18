@@ -14,10 +14,10 @@ export default {
   components: {
     Top
   },
-  async asyncData (ctx) {
+  async asyncData () {
     const request = new ListClipsRequest()
     request.limit = 4
-    request.orderBy = "toprated"
+    request.orderBy = 'toprated'
 
     const { clips } = await ClipsApi.get(request)
 
