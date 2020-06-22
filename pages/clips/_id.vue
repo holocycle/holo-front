@@ -3,7 +3,7 @@
     <Movies
       :video-id="clip.video.id"
       :title="clip.title"
-      :chips="chips"
+      :tags="tags"
       :start="clip.beginAt"
       :end="clip.endAt"
       :description="clip.description"
@@ -19,6 +19,7 @@ import { ListCommentsRequest, PostCommentRequest } from 'holo-back'
 import Movies from '../../components/template/Movies'
 import ClipsApi from '../../lib/api/clips'
 import CommentApi from '../../lib/api/comment'
+import TagApi from '../../lib/api/tags'
 
 export default {
   components: {
@@ -28,6 +29,8 @@ export default {
     const clipId = ctx.params.id
     const { clip } = await ClipsApi.getByClipId(clipId)
 
+    const { tags } = await TagApi.getByClipId(clipId)
+
     const request = new ListCommentsRequest()
     request.limit = 20
     request.orderBy = 'latest'
@@ -35,6 +38,7 @@ export default {
 
     return {
       clip,
+      tags,
       comments
     }
   },
@@ -42,7 +46,7 @@ export default {
     return {
       clip: null,
       comments: null,
-      chips: [
+      tags: [
         {
           name: '夏色まつり',
           color: '#FF7709'

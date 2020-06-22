@@ -19,11 +19,11 @@
         </v-btn>
       </v-layout>
     </div>
-    <v-chip v-for="chip in chips" :key="chip.name" class="ma-2" :color="chip.color" label>
+    <v-chip v-for="tag in tags" :key="tag.name" class="ma-2" :color="tag.color" label>
       <v-icon left>
         mdi-account-circle-outline
       </v-icon>
-      {{ chip.name }}
+      {{ tag.name }}
     </v-chip>
     <TextWithLineBreaks>{{ descriptions }}</TextWithLineBreaks>
   </div>
@@ -57,7 +57,7 @@ export default {
       type: String,
       required: true
     },
-    chips: {
+    tags: {
       type: Array,
       required: false,
       default: null

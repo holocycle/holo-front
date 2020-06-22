@@ -6,9 +6,9 @@
 </template>
 
 <script>
+import { ListClipsRequest } from 'holo-back'
 import Top from '../components/template/Top'
 import ClipsApi from '../lib/api/clips'
-import { Clip, ListClipsRequest } from 'holo-back'
 
 export default {
   components: {

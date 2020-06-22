@@ -3,7 +3,7 @@
     video-id="HKb9JfeA2-Y"
     start="771"
     title="中笑いのくだり"
-    :chips="chips"
+    :tags="chips"
     description="ここに動画の説明が入る。"
     :related-movie-previews="relatedMoviePreviews"
     :recommended-movie-previews="recommendedMoviePreviews"

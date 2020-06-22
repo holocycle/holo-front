@@ -6,11 +6,17 @@ lg: 4 column
 -->
 <template>
   <div>
-    <div>
-      <h2 v-if="title">
-        {{ title }}
-      </h2>
-    </div>
+    <v-row>
+      <v-col v-if="title">
+        <h2>{{ title }}</h2>
+      </v-col>
+      <v-spacer />
+      <v-col v-if="listUrl">
+        <nuxt-link class="left-text" :to="`${listUrl}`" tag="p">
+          すべて見る
+        </nuxt-link>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col
         v-for="moviePreview in moviePreviews"
@@ -43,6 +49,11 @@ export default {
       required: false,
       default: null
     },
+    listUrl: {
+      type: String,
+      required: false,
+      default: null
+    },
     moviePreviews: {
       type: Array,
       required: true
@@ -50,6 +61,8 @@ export default {
   }
 }
 </script>
-
 <style>
+.left-text {
+  text-align: right
+}
 </style>
