@@ -9,11 +9,10 @@
       <v-layout>
         <h2>{{ title }}</h2>
         <v-spacer />
-        <v-btn icon>
-          <v-icon color="yellow">
-            mdi-star
-          </v-icon>
-        </v-btn>
+        <FavoriteStartIcon
+          :favorite="favorite"
+          @starClicked="starClicked"
+        />
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
@@ -30,11 +29,13 @@
 </template>
 
 <script>
+import FavoriteStartIcon from '../../atoms/icon/FavoriteStarIcon'
 import YoutubeIframe from '../../atoms/youtube/YoutubeIframe'
 import TextWithLineBreaks from '../../atoms/textField/TextWithLineBreaks'
 
 export default {
   components: {
+    FavoriteStartIcon,
     YoutubeIframe,
     TextWithLineBreaks
   },
@@ -66,6 +67,20 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    favorite: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  methods: {
+    starClicked () {
+      if (this.favorite) {
+        this.$emit('deleteFavorite')
+      } else {
+        this.$emit('putFavorite')
+      }
     }
   }
 }

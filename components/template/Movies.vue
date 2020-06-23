@@ -8,6 +8,9 @@
         :title="title"
         :tags="tags"
         :description="description"
+        :favorite="favorite"
+        @putFavorite="putFavorite"
+        @deleteFavorite="deleteFavorite"
       />
       <Comments
         :comments="comments"
@@ -80,7 +83,12 @@ export default {
     recommendedMoviePreviews: {
       type: Array,
       required: true
-    }
+    },
+    favorite: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
   },
   data () {
     return {}
@@ -88,6 +96,12 @@ export default {
   methods: {
     sendComment (message) {
       this.$emit('sendComment', message)
+    },
+    putFavorite () {
+      this.$emit('putFavorite')
+    },
+    deleteFavorite () {
+      this.$emit('deleteFavorite')
     }
   }
 }
