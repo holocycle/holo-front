@@ -11,11 +11,14 @@
       :related-movie-previews="relatedMoviePreviews"
       :recommended-movie-previews="recommendedMoviePreviews"
       @sendComment="sendComment"
+      @putFavorite="putFavorite"
+      @deleteFavorite="deleteFavorite"
+      :favorite="favorite"
     />
   </div>
 </template>
 <script>
-import { ListCommentsRequest, PostCommentRequest } from 'holo-back'
+import { DeleteFavoriteRequest, ListCommentsRequest, PostCommentRequest, PutFavoriteRequest } from 'holo-back'
 import Movies from '../../components/template/Movies'
 import ClipsApi from '../../lib/api/clips'
 import CommentApi from '../../lib/api/comment'
@@ -36,10 +39,14 @@ export default {
     request.orderBy = 'latest'
     const { comments } = await CommentApi.getList(clipId, request)
 
+    // TODO: favoriteはAPIから取得した値を利用する
+    const favorite = false
+
     return {
       clip,
       tags,
-      comments
+      comments,
+      favorite
     }
   },
   data () {
@@ -90,7 +97,8 @@ export default {
           url: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
           subTitle: 'ここにタイトルが入る'
         }
-      ]
+      ],
+      favorite: false
     }
   },
   methods: {
@@ -108,6 +116,16 @@ export default {
       request.orderBy = 'latest'
       const { comments } = await CommentApi.getList(this.clip.id, request)
       this.comments = comments
+    },
+    async putFavorite () {
+      const request = new PutFavoriteRequest()
+      await ClipsApi.putFavorite(this.clip.id, request)
+      this.favorite = true
+    },
+    async deleteFavorite () {
+      const request = new DeleteFavoriteRequest()
+      await ClipsApi.deleteFavorite(this.clip.id, request)
+      this.favorite = false
     }
   }
 }

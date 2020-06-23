@@ -1,17 +1,20 @@
 <template>
   <v-list>
     <v-subheader>{{ title }}</v-subheader>
-    <v-list-item
-      v-for="moviePreview in moviePreviews"
-      :key="moviePreview.url"
-      :to="moviePreview.to"
-    >
-      <v-img width="0" :src="moviePreview.url" />
-      <v-list-item-content>
-        <v-list-item-subtitle>{{ moviePreview.subTitle }}</v-list-item-subtitle>
-        <v-list-item-title>{{ moviePreview.title }}</v-list-item-title>
-      </v-list-item-content>
+    <v-list-item>
+      実装予定
     </v-list-item>
+    <!--    <v-list-item-->
+    <!--      v-for="moviePreview in moviePreviews"-->
+    <!--      :key="moviePreview.url"-->
+    <!--      :to="moviePreview.to"-->
+    <!--    >-->
+    <!--      <v-img width="0" :src="moviePreview.url" />-->
+    <!--      <v-list-item-content>-->
+    <!--        <v-list-item-subtitle>{{ moviePreview.subTitle }}</v-list-item-subtitle>-->
+    <!--        <v-list-item-title>{{ moviePreview.title }}</v-list-item-title>-->
+    <!--      </v-list-item-content>-->
+    <!--    </v-list-item>-->
   </v-list>
 </template>
 
