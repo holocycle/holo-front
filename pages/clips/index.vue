@@ -1,22 +1,47 @@
 <template>
-  <Movies
-    video-id="9nD7aQ_cKAM"
-    title="バレンタインキッス"
-    :tags="chips"
-    description="ここに動画の説明が入る。"
-    :related-movie-previews="relatedMoviePreviews"
-    :recommended-movie-previews="recommendedMoviePreviews"
-  />
+  <div>
+    <Movies
+      :video-id="clip.video.id"
+      :title="clip.title"
+      :tags="chips"
+      :start="clip.beginAt"
+      :end="clip.endAt"
+      :description="clip.description"
+      :comments="comments"
+      :related-movie-previews="relatedMoviePreviews"
+      :recommended-movie-previews="recommendedMoviePreviews"
+      @sendComment="sendComment"
+    />
+  </div>
 </template>
 <script>
+import { ListCommentsRequest, PostCommentRequest } from 'holo-back'
 import Movies from '../../components/template/Movies'
+import ClipsApi from '../../lib/api/clips'
+import CommentApi from '../../lib/api/comment'
 
 export default {
   components: {
     Movies
   },
+  async asyncData (ctx) {
+    const clipId = ctx.params.id
+    const { clip } = await ClipsApi.post()
+
+    const request = new ListCommentsRequest()
+    request.limit = 20
+    request.orderBy = 'latest'
+    const { comments } = await CommentApi.getList(clipId, request)
+
+    return {
+      clip,
+      comments
+    }
+  },
   data () {
     return {
+      clip: null,
+      comments: null,
       chips: [
         {
           name: '夏色まつり',
@@ -62,6 +87,23 @@ export default {
           subTitle: 'ここにタイトルが入る'
         }
       ]
+    }
+  },
+  methods: {
+    async sendComment (comment) {
+      const request = new PostCommentRequest()
+      request.content = comment
+      const postCommentResponse = await CommentApi.post(this.clip.id, request)
+      console.log('created. id: ' + postCommentResponse.commentId)
+
+      await this.refreshCommentField()
+    },
+    async refreshCommentField () {
+      const request = new ListCommentsRequest()
+      request.limit = 20
+      request.orderBy = 'latest'
+      const { comments } = await CommentApi.getList(this.clip.id, request)
+      this.comments = comments
     }
   }
 }

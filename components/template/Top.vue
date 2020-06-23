@@ -1,7 +1,16 @@
 <template>
   <div>
-    <MoviePreviewOneLine title="人気の切り抜き一覧" :movie-previews="popularClipPreviews" />
-    <MoviePreviewOneLine title="お気に入りの動画一覧" :movie-previews="favoriteClipPreviews" />
+    <MoviePreviewOneLine
+      title="人気の切り抜き"
+      list-url="/clips/toprated"
+      :movie-previews="popularClipPreviews"
+    />
+    <MoviePreviewOneLine
+      title="お気に入り"
+      list-url="/users/me"
+      :movie-previews="favoriteClipPreviews" />
+    <h1>tag一覧(作成中)</h1>
+    <p>ここにtag一覧(ランダム?)を載せる</p>
   </div>
 </template>
 

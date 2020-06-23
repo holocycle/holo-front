@@ -6,7 +6,7 @@
         :start="start"
         :end="end"
         :title="title"
-        :chips="chips"
+        :tags="tags"
         :description="description"
       />
       <Comments
@@ -58,7 +58,7 @@ export default {
       type: String,
       required: true
     },
-    chips: {
+    tags: {
       type: Array,
       required: false,
       default: null
