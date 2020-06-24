@@ -39,14 +39,10 @@ export default {
     request.orderBy = 'latest'
     const { comments } = await CommentApi.getList(clipId, request)
 
-    // TODO: favoriteはAPIから取得した値を利用する
-    const favorite = false
-
     return {
       clip,
       tags,
-      comments,
-      favorite
+      comments
     }
   },
   data () {
@@ -126,6 +122,16 @@ export default {
       const request = new DeleteFavoriteRequest()
       await ClipsApi.deleteFavorite(this.clip.id, request)
       this.favorite = false
+    }
+  },
+  async mounted () {
+    const clipId = this.$route.params.id
+
+    try {
+      const getFavoriteResponse = await ClipsApi.getFavorite(clipId)
+      this.favorite = getFavoriteResponse.favorite
+    } catch (e) {
+      console.log(e)
     }
   }
 }
