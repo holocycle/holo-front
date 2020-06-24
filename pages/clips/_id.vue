@@ -1,24 +1,28 @@
 <template>
   <div>
     <Movies
-      :video-id="clip.videoId"
+      :video-id="clip.video.id"
       :title="clip.title"
-      :chips="chips"
+      :tags="tags"
       :start="clip.beginAt"
       :end="clip.endAt"
       :description="clip.description"
       :comments="comments"
-      v-on:sendComment="sendComment"
       :related-movie-previews="relatedMoviePreviews"
       :recommended-movie-previews="recommendedMoviePreviews"
+      @sendComment="sendComment"
+      @putFavorite="putFavorite"
+      @deleteFavorite="deleteFavorite"
+      :favorite="favorite"
     />
   </div>
 </template>
 <script>
-import { ListCommentsRequest, PostCommentRequest } from 'holo-back'
+import { DeleteFavoriteRequest, ListCommentsRequest, PostCommentRequest, PutFavoriteRequest } from 'holo-back'
 import Movies from '../../components/template/Movies'
 import ClipsApi from '../../lib/api/clips'
 import CommentApi from '../../lib/api/comment'
+import TagApi from '../../lib/api/tags'
 
 export default {
   components: {
@@ -28,21 +32,28 @@ export default {
     const clipId = ctx.params.id
     const { clip } = await ClipsApi.getByClipId(clipId)
 
+    const { tags } = await TagApi.getByClipId(clipId)
+
     const request = new ListCommentsRequest()
     request.limit = 20
     request.orderBy = 'latest'
     const { comments } = await CommentApi.getList(clipId, request)
 
+    // TODO: favoriteはAPIから取得した値を利用する
+    const favorite = false
+
     return {
       clip,
-      comments
+      tags,
+      comments,
+      favorite
     }
   },
   data () {
     return {
       clip: null,
       comments: null,
-      chips: [
+      tags: [
         {
           name: '夏色まつり',
           color: '#FF7709'
@@ -86,7 +97,8 @@ export default {
           url: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
           subTitle: 'ここにタイトルが入る'
         }
-      ]
+      ],
+      favorite: false
     }
   },
   methods: {
@@ -104,6 +116,16 @@ export default {
       request.orderBy = 'latest'
       const { comments } = await CommentApi.getList(this.clip.id, request)
       this.comments = comments
+    },
+    async putFavorite () {
+      const request = new PutFavoriteRequest()
+      await ClipsApi.putFavorite(this.clip.id, request)
+      this.favorite = true
+    },
+    async deleteFavorite () {
+      const request = new DeleteFavoriteRequest()
+      await ClipsApi.deleteFavorite(this.clip.id, request)
+      this.favorite = false
     }
   }
 }

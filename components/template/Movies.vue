@@ -6,12 +6,15 @@
         :start="start"
         :end="end"
         :title="title"
-        :chips="chips"
+        :tags="tags"
         :description="description"
+        :favorite="favorite"
+        @putFavorite="putFavorite"
+        @deleteFavorite="deleteFavorite"
       />
       <Comments
         :comments="comments"
-        v-on:sendComment="sendComment"
+        @sendComment="sendComment"
       />
     </v-col>
     <v-col cols="4">
@@ -58,7 +61,7 @@ export default {
       type: String,
       required: true
     },
-    chips: {
+    tags: {
       type: Array,
       required: false,
       default: null
@@ -80,7 +83,12 @@ export default {
     recommendedMoviePreviews: {
       type: Array,
       required: true
-    }
+    },
+    favorite: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
   },
   data () {
     return {}
@@ -88,6 +96,12 @@ export default {
   methods: {
     sendComment (message) {
       this.$emit('sendComment', message)
+    },
+    putFavorite () {
+      this.$emit('putFavorite')
+    },
+    deleteFavorite () {
+      this.$emit('deleteFavorite')
     }
   }
 }

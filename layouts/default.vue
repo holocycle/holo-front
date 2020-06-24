@@ -12,7 +12,9 @@
             </v-list-item-content>
           </v-list-item>
           <v-divider v-else-if="item.divider" :key="index" />
-          <v-subheader v-else-if="item.header" :key="item.header">{{ item.header }}</v-subheader>
+          <v-subheader v-else-if="item.header" :key="item.header">
+            {{ item.header }}
+          </v-subheader>
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -42,7 +44,9 @@
               <v-list-item-icon>
                 <v-icon>mdi-content-cut</v-icon>
               </v-list-item-icon>
-              <v-list-item-content icon @click="moveToClipCreate">切り抜き作成</v-list-item-content>
+              <v-list-item-content icon @click="moveToClipCreate">
+                切り抜き作成
+              </v-list-item-content>
             </v-list-item>
             <v-list-item key="createClipList" disabled>
               <v-list-item-icon>
@@ -59,14 +63,22 @@
     </v-app-bar>
     <v-content>
       <v-container>
-        <nuxt />
+        <v-row>
+          <v-col xs="0" sm="0" md="1" lg="1" xl="2" />
+          <v-col xs="12" sm="12" md="10" lg="10" xl="8">
+            <nuxt />
+          </v-col>
+          <v-col xs="0" sm="0" md="1" lg="1" xl="2" />
+        </v-row>
       </v-container>
     </v-content>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>mdi-repeat</v-icon>
+            <v-icon light>
+              mdi-repeat
+            </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
@@ -113,9 +125,14 @@ export default {
         { divider: true },
         { header: '設定' },
         {
-          action: '/',
+          action: '/users',
+          title: 'ユーザ一覧',
+          icon: 'mdi-account-multiple'
+        },
+        {
+          action: '/settings/me',
           title: 'ユーザ設定',
-          icon: 'mdi-groups'
+          icon: 'fas fa-cog'
         }
       ]
     },

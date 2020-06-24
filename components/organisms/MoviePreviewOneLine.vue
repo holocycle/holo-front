@@ -1,17 +1,37 @@
+<!--
+xs: 1 column
+sm: 2 column
+md: 3 column
+lg: 4 column
+-->
 <template>
   <div>
-    <h2 v-if="title">
-      {{ title }}
-    </h2>
     <v-row>
-      <div v-for="moviePreview in moviePreviews" :key="moviePreview.imageUrl">
+      <v-col v-if="title">
+        <h2>{{ title }}</h2>
+      </v-col>
+      <v-spacer />
+      <v-col v-if="listUrl">
+        <nuxt-link class="left-text" :to="`${listUrl}`" tag="p">
+          すべて見る
+        </nuxt-link>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col
+        v-for="moviePreview in moviePreviews"
+        :key="moviePreview.imageUrl"
+        xs="12"
+        sm="6"
+        md="4"
+        lg="3"
+      >
         <MoviePreviewCard
           :to="moviePreview.to"
-          image-height="200px"
           :image-url="moviePreview.imageUrl"
           :text="moviePreview.text"
         />
-      </div>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -29,6 +49,11 @@ export default {
       required: false,
       default: null
     },
+    listUrl: {
+      type: String,
+      required: false,
+      default: null
+    },
     moviePreviews: {
       type: Array,
       required: true
@@ -36,6 +61,8 @@ export default {
   }
 }
 </script>
-
 <style>
+.left-text {
+  text-align: right
+}
 </style>

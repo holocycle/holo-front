@@ -2,7 +2,6 @@
   <div>
     <YoutubeIframe
       :video-id="videoId"
-      :allow="allow"
       :start="start"
       :end="end"
     />
@@ -10,32 +9,33 @@
       <v-layout>
         <h2>{{ title }}</h2>
         <v-spacer />
-        <v-btn icon>
-          <v-icon color="yellow">
-            mdi-star
-          </v-icon>
-        </v-btn>
+        <FavoriteStartIcon
+          :favorite="favorite"
+          @starClicked="starClicked"
+        />
         <v-btn icon>
           <v-icon>mdi-menu</v-icon>
         </v-btn>
       </v-layout>
     </div>
-    <v-chip v-for="chip in chips" :key="chip.name" class="ma-2" :color="chip.color" label>
+    <v-chip v-for="tag in tags" :key="tag.name" class="ma-2" :color="tag.color" label>
       <v-icon left>
         mdi-account-circle-outline
       </v-icon>
-      {{ chip.name }}
+      {{ tag.name }}
     </v-chip>
     <TextWithLineBreaks>{{ descriptions }}</TextWithLineBreaks>
   </div>
 </template>
 
 <script>
+import FavoriteStartIcon from '../../atoms/icon/FavoriteStarIcon'
 import YoutubeIframe from '../../atoms/youtube/YoutubeIframe'
 import TextWithLineBreaks from '../../atoms/textField/TextWithLineBreaks'
 
 export default {
   components: {
+    FavoriteStartIcon,
     YoutubeIframe,
     TextWithLineBreaks
   },
@@ -54,16 +54,11 @@ export default {
       required: false,
       default: null
     },
-    allow: {
-      type: String,
-      required: false,
-      default: 'accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture'
-    },
     title: {
       type: String,
       required: true
     },
-    chips: {
+    tags: {
       type: Array,
       required: false,
       default: null
@@ -72,6 +67,20 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    favorite: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  methods: {
+    starClicked () {
+      if (this.favorite) {
+        this.$emit('deleteFavorite')
+      } else {
+        this.$emit('putFavorite')
+      }
     }
   }
 }

@@ -1,25 +1,17 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <MoviePreviewOneLine
-        title="人気の動画一覧"
-        :movie-previews="popularMoviePreviews"
-      />
-      <br>
-      <MoviePreviewOneLine
-        title="お気に入りの動画一覧"
-        :movie-previews="favoriteMoviePreviews"
-      />
-    </v-flex>
-  </v-layout>
+  <div>
+    <MoviePreviewOneLine
+      title="人気の切り抜き"
+      list-url="/clips/toprated"
+      :movie-previews="popularClipPreviews"
+    />
+    <MoviePreviewOneLine
+      title="お気に入り"
+      list-url="/users/me"
+      :movie-previews="favoriteClipPreviews" />
+    <h1>tag一覧(作成中)</h1>
+    <p>ここにtag一覧(ランダム?)を載せる</p>
+  </div>
 </template>
 
 <script>
@@ -30,48 +22,13 @@ export default {
     MoviePreviewOneLine
   },
   props: {
-    title: {
-      type: String,
-      required: false,
-      default: null
-    // },
-    // moviePreviews: {
-    //   type: Array,
-    //   required: false
-    }
-  },
-  data () {
-    return {
-      popularMoviePreviews: [
-        {
-          to: '/movies/X9zw0QF12Kc',
-          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
-          text: '【歌ってみた】サクラカゼ'
-        }, {
-          to: '/movies/9nD7aQ_cKAM',
-          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
-          text: '【歌ってみた】バレンタインキッス'
-        }, {
-          to: '/movies/xccH7xxG5zc',
-          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
-          text: 'コンセプト'
-        }
-      ],
-      favoriteMoviePreviews: [
-        {
-          to: '/movies/X9zw0QF12Kc',
-          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
-          text: '【歌ってみた】サクラカゼ'
-        }, {
-          to: '/movies/9nD7aQ_cKAM',
-          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
-          text: '【歌ってみた】バレンタインキッス'
-        }, {
-          to: '/movies/xccH7xxG5zc',
-          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
-          text: 'コンセプト'
-        }
-      ]
+    popularClipPreviews: {
+      type: Array,
+      required: true,
+    },
+    favoriteClipPreviews: {
+      type: Array,
+      required: true,
     }
   }
 }
