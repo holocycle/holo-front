@@ -1,6 +1,6 @@
 import {
   GetLoginUserRequest,
-  GetLoginUserResponse,
+  GetLoginUserResponse, GetUserFavoritesRequest,
   GetUserFavoritesResponse,
   GetUserResponse, ListUserRequest,
   ListUserResponse
@@ -18,9 +18,9 @@ export default class UserApi {
     return api.getWithToken<null, GetLoginUserResponse>(path, null)
   }
 
-  static getUsersMeFavorites (): Promise<GetUserFavoritesResponse> {
+  static getUsersMeFavorites (userFavoritesRequest: GetUserFavoritesRequest): Promise<GetUserFavoritesResponse> {
     const path = '/users/me/favorites'
-    return api.getWithToken<null, GetUserFavoritesResponse>(path, null)
+    return api.getWithToken<GetUserFavoritesRequest, GetUserFavoritesResponse>(path, userFavoritesRequest)
   }
 
   static getUserDetail (userId: string): Promise<GetUserResponse> {

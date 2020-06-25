@@ -13,15 +13,6 @@ export default {
   components: {
     SettingsMe
   },
-  async asyncData () {
-    if (process.server) {
-      return {}
-    }
-    const { loginUser } = await UserApi.getUsersMe()
-    return {
-      loginUser
-    }
-  },
   data () {
     return {
       loginUser: {}
@@ -30,6 +21,14 @@ export default {
   computed: {
     googlePersonalInfo () {
       return process.env.GOOGLE_PERSONAL_INFO_URL
+    }
+  },
+  async mounted () {
+    try {
+      const { loginUser } = await UserApi.getUsersMe()
+      this.loginUser = loginUser
+    } catch (e) {
+      console.log(e)
     }
   }
 }
