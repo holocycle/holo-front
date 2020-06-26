@@ -23,7 +23,7 @@
         md="4"
         lg="3"
       >
-        <MoviePreviewCard
+        <ClipPreviewCard
           :to="getDetailUrl(clip.id)"
           :image-url="clip.video.mediumThumnailUrl"
           :text="clip.title"
@@ -41,12 +41,12 @@
 <script>
 import UserApi from '../../lib/api/users'
 import Avatar from '../../components/atoms/Avatar'
-import MoviePreviewCard from '../../components/molecules/cards/MoviePreviewCard'
+import ClipPreviewCard from '../../components/molecules/clips/ClipPreviewCard'
 
 export default {
   components: {
     Avatar,
-    MoviePreviewCard
+    ClipPreviewCard
   },
   async asyncData ({ route }) {
     const id = route.params.id

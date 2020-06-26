@@ -52,7 +52,7 @@
           <v-card-title>プレビュー</v-card-title>
           <v-card-subtitle>ここで再生時間の確認ができます</v-card-subtitle>
           <v-card-text>
-            <Movie
+            <Clip
               :video-id="videoId"
               :start="start"
               :end="end"
@@ -70,10 +70,10 @@
 <script>
 import { PostClipRequest } from 'holo-back'
 import ClipsApi from '../../lib/api/clips'
-import Movie from '../../components/molecules/movies/Movie'
+import Clip from '../../components/molecules/clips/Clip'
 
 export default {
-  components: { Movie },
+  components: { Clip },
   asyncData (ctx) {
     const query = ctx.query
     return {

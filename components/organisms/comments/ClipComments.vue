@@ -15,22 +15,19 @@
       />
     </v-list-item>
     <v-divider />
-    <v-list-item
-      v-for="(comment, index) in comments"
-      :key="index + comment.content + comment.user.name"
-    >
-      <v-list-item-avatar>
-        <v-img :src="comment.user.iconUrl" />
-      </v-list-item-avatar>
-      <v-list-item-content>
-        <v-list-item-subtitle v-html="comment.user.name" />
-        <v-list-item-title v-html="comment.content" />
-      </v-list-item-content>
-    </v-list-item>
+    <template v-for="(comment, index) in comments">
+      <CommentListItem
+        :key="index + comment.content + comment.user.name"
+        :comment="comment"
+      />
+    </template>
   </v-list>
 </template>
 <script>
+import CommentListItem from '../../molecules/comments/CommentListItem'
+
 export default {
+  components: { CommentListItem },
   props: {
     comments: {
       type: Array,
@@ -41,7 +38,7 @@ export default {
   data: () => ({
     message: '',
     header: 'コメント',
-    comment: [
+    comments: [
       {
         content: '1get',
         user: {

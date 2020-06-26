@@ -26,7 +26,7 @@ lg: 4 column
         md="4"
         lg="3"
       >
-        <MoviePreviewCard
+        <ClipPreviewCard
           :to="moviePreview.to"
           :image-url="moviePreview.imageUrl"
           :text="moviePreview.text"
@@ -37,11 +37,11 @@ lg: 4 column
 </template>
 
 <script>
-import MoviePreviewCard from '../molecules/cards/MoviePreviewCard'
+import ClipPreviewCard from '../molecules/clips/ClipPreviewCard'
 
 export default {
   components: {
-    MoviePreviewCard
+    ClipPreviewCard
   },
   props: {
     title: {

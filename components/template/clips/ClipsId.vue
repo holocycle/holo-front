@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="8">
-      <Movie
+      <Clip
         :video-id="videoId"
         :start="start"
         :end="end"
@@ -12,18 +12,18 @@
         @putFavorite="putFavorite"
         @deleteFavorite="deleteFavorite"
       />
-      <Comments
+      <ClipComments
         :comments="comments"
         @sendComment="sendComment"
       />
     </v-col>
     <v-col cols="4">
-      <SuggestMovies
+      <SuggestClips
         title="関連動画"
         :movie-previews="relatedMoviePreviews"
       />
       <br>
-      <SuggestMovies
+      <SuggestClips
         title="おすすめ動画"
         :movie-previews="recommendedMoviePreviews"
       />
@@ -32,15 +32,15 @@
 </template>
 
 <script>
-import Movie from '../molecules/movies/Movie'
-import SuggestMovies from '../molecules/lists/SuggestMovies'
-import Comments from '../molecules/lists/Comments'
+import Clip from '../../molecules/clips/Clip'
+import SuggestClips from '../../molecules/clips/SuggestClips'
+import ClipComments from '../../organisms/comments/ClipComments'
 
 export default {
   components: {
-    Movie,
-    SuggestMovies,
-    Comments
+    Clip,
+    SuggestClips,
+    ClipComments
   },
   props: {
     videoId: {
@@ -88,7 +88,7 @@ export default {
       type: Boolean,
       required: false,
       default: false
-    },
+    }
   },
   data () {
     return {}

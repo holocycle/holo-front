@@ -10,7 +10,7 @@
         md="4"
         lg="3"
       >
-        <MoviePreviewCard
+        <ClipPreviewCard
           :to="getDetailUrl(clip.id)"
           :image-url="clip.video.mediumThumnailUrl"
           :text="clip.title"
@@ -27,12 +27,12 @@
 </template>
 <script>
 import { ListClipsRequest } from 'holo-back'
-import MoviePreviewCard from '../../components/molecules/cards/MoviePreviewCard'
+import ClipPreviewCard from '../../components/molecules/clips/ClipPreviewCard'
 import ClipsApi from '../../lib/api/clips'
 
 export default {
   components: {
-    MoviePreviewCard
+    ClipPreviewCard
   },
   async asyncData () {
     const request = new ListClipsRequest()
