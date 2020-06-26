@@ -14,11 +14,13 @@ export function initializeAxios (axiosInstance: NuxtAxiosInstance) {
   }, (error) => {
     if (error.response.status === 401 &&
       process.client &&
-      typeof process.env.LOGIN_URL !== 'undefined'
+      typeof process.env.LOGIN_URL !== 'undefined' &&
+      localStorage.getItem('token') !== null
     ) {
+      console.log(localStorage.getItem('token'))
       const path = location.pathname
       localStorage.setItem('redirectPath', path)
-      window.location.href = process.env.LOGIN_URL
+      // window.location.href = process.env.LOGIN_URL
     }
     return error
   })

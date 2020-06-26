@@ -10,11 +10,22 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      }
     ]
   },
   /*
@@ -24,16 +35,21 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/auth-localstorage', ssr: false },
+    {
+      src: '~/plugins/auth-localstorage',
+      ssr: false
+    },
     { src: '~/plugins/axios-accesser' },
     { src: '~/plugins/vue-youtube' },
-    { src: '~/plugins/vuetify', ssr: false }
+    {
+      src: '~/plugins/vuetify',
+      ssr: false
+    }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -53,8 +69,7 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  axios: {},
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -62,11 +77,10 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
+        light: {
+          primary: '#6ECDF8',
+          accent: '#6ECDF8',
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
@@ -88,8 +102,10 @@ export default {
   },
   env: {
     API_URL: process.env.API_URL || 'http://localhost:8080',
-    LOGIN_URL: process.env.LOGIN_URL || 'http://localhost:8080/login/google?callback=http://localhost:3000/login/success',
-    GOOGLE_PERSONAL_INFO_URL: process.env.GOOGLE_PERSONAL_INFO_URL || 'https://myaccount.google.com/personal-info',
+    LOGIN_URL: process.env.LOGIN_URL ||
+      'http://localhost:8080/login/google?callback=http://localhost:3000/login/success',
+    GOOGLE_PERSONAL_INFO_URL: process.env.GOOGLE_PERSONAL_INFO_URL ||
+      'https://myaccount.google.com/personal-info',
   }
   // router: {
   //   middleware: 'auth-cookie'

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>切り抜きを作成する</h2>
+    <h2 class="c-text-base">切り抜きを作成する</h2>
     <v-row>
       <v-col cols="4">
         <v-form>
@@ -32,7 +32,8 @@
           </v-layout>
           <v-layout>
             <v-btn
-              color="secondary"
+              color="primary"
+              outlined
               @click="back"
             >
               戻る
@@ -48,7 +49,7 @@
         </v-form>
       </v-col>
       <v-col cols="8">
-        <v-card>
+        <v-card class="c-text-base">
           <v-card-title>プレビュー</v-card-title>
           <v-card-subtitle>ここで再生時間の確認ができます</v-card-subtitle>
           <v-card-text>

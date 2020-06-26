@@ -125,6 +125,11 @@ export default {
     }
   },
   async mounted () {
+    const login = this.$store.getters['login/login']
+    if (!login) {
+      return
+    }
+
     const clipId = this.$route.params.id
 
     try {

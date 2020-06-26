@@ -4,6 +4,8 @@
 
 > My wonderful Nuxt.js project
 
+# forDeveloper
+
 ## Build Setup
 
 ```bash
@@ -23,6 +25,22 @@ $ yarn generate
 
 # upgrade holo-back module
 yarn upgrade holo-back
+```
+
+## use icons
+
+### MaterialDesign Icons
+https://materialdesignicons.com/cdn/2.0.46/
+
+```vue
+<v-icon>mdi-access-point</v-icon>
+```
+
+### Font Awesome
+https://fontawesome.com/icons?d=gallery
+
+```vue
+<v-icon>fab fa-youtube</v-icon>
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

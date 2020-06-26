@@ -2,3 +2,44 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+$base: #f2f5f6;
+$secondary-base: #fdfeff;
+
+$primary: #6ECDF8;
+
+$text-primary: #5592b3;
+$text-base: #50616a;
+$test: #ececec;
+
+
+.c-primary {
+  background-color: $primary;
+}
+
+.c-primary-icon {
+  color: $primary !important;
+  caret-color: $primary !important;
+}
+
+.c-primary-text {
+  color: $primary !important;
+  caret-color: $primary !important;
+}
+
+.c-base {
+  background-color: $base !important;
+}
+
+.c-secondary-base {
+  background-color: $secondary-base !important;
+}
+
+.c-text-primary {
+  color: $text-primary !important;
+  caret-color: $text-primary !important;
+}
+
+.c-text-base {
+  color: $text-base !important;
+  caret-color: $text-base !important;
+}

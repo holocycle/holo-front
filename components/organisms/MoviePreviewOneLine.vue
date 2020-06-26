@@ -8,11 +8,11 @@ lg: 4 column
   <div>
     <v-row>
       <v-col v-if="title">
-        <h2>{{ title }}</h2>
+        <h2 class="c-text-base">{{ title }}</h2>
       </v-col>
       <v-spacer />
       <v-col v-if="listUrl">
-        <nuxt-link class="left-text" :to="`${listUrl}`" tag="p">
+        <nuxt-link class="c-text-base left-text" :to="`${listUrl}`" tag="p">
           すべて見る
         </nuxt-link>
       </v-col>
