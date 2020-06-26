@@ -6,17 +6,19 @@ lg: 4 column
 -->
 <template>
   <div>
-    <v-row>
-      <v-col v-if="title">
-        <h2 class="c-text-base">{{ title }}</h2>
-      </v-col>
-      <v-spacer />
-      <v-col v-if="listUrl">
-        <nuxt-link class="c-text-base left-text" :to="`${listUrl}`" tag="p">
+    <nuxt-link class="c-text-base c-clickable" :to="`${listUrl}`" tag="div">
+      <v-row>
+        <v-col v-show="title">
+          <h2 class="c-text-base">
+            {{ title }}
+          </h2>
+        </v-col>
+        <v-spacer />
+        <v-col class="left-text" v-if="listUrl">
           すべて見る
-        </nuxt-link>
-      </v-col>
-    </v-row>
+        </v-col>
+      </v-row>
+    </nuxt-link>
     <v-row>
       <v-col
         v-for="moviePreview in moviePreviews"

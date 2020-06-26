@@ -43,3 +43,8 @@ $test: #ececec;
   color: $text-base !important;
   caret-color: $text-base !important;
 }
+
+.c-clickable {
+  cursor: pointer;
+  cursor: hand; // for IE6
+}

@@ -20,13 +20,16 @@
     </v-navigation-drawer>
     <v-app-bar class="c-secondary-base" :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
-      <nuxt-link to="/" tag="div">
-        <v-icon class="c-primary-icon">mdi-triangle</v-icon>
-      </nuxt-link>
-      <nuxt-link to="/" tag="div">
-        <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
-      </nuxt-link>
+      <div class="c-clickable">
+        <nuxt-link to="/" tag="div">
+          <v-icon class="c-primary-icon c-clickable">mdi-triangle</v-icon>
+        </nuxt-link>
+      </div>
+      <div class="c-clickable">
+        <nuxt-link to="/" tag="div">
+          <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
+        </nuxt-link>
+      </div>
       <v-spacer />
       <v-btn to="/help" icon>
         <v-icon>mdi-help-circle-outline</v-icon>
