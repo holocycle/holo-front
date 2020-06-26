@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>切り抜きを作成する</h2>
+    <h2 class="c-text-base">切り抜きを作成する</h2>
     <v-row>
       <v-col cols="4">
         <v-form>
@@ -20,7 +20,7 @@
                 </v-col>
                 <v-spacer />
                 <v-col cols="4">
-                  <v-btn @click="setStart" :disabled="canSetStart">
+                  <v-btn class="c-text-base" @click="setStart" :disabled="canSetStart">
                     <v-icon color="yellow">mdi-ray-start</v-icon>
                     開始
                   </v-btn>
@@ -37,7 +37,7 @@
                   ></v-text-field>
                 </v-col>
                 <v-col cols="4">
-                  <v-btn @click="setEnd" :disabled="canSetEnd">
+                  <v-btn class="c-text-base" @click="setEnd" :disabled="canSetEnd">
                     終了
                     <v-icon color="yellow">mdi-ray-end</v-icon>
                   </v-btn>
@@ -49,7 +49,7 @@
             <v-spacer />
             <v-col>
               <v-btn
-                color="primary"
+                color="accent"
                 :disabled="canCreateClip"
                 @click="confirmClip"
               >
@@ -61,7 +61,7 @@
       </v-col>
       <v-col cols="8">
         <v-card>
-          <v-card-title>プレビュー</v-card-title>
+          <v-card-title class="c-text-base">プレビュー</v-card-title>
           <v-card-text>
             <youtube
               ref="youtube"

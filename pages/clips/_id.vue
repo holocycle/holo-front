@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Movies
+    <ClipsId
       :video-id="clip.video.id"
       :title="clip.title"
       :tags="tags"
@@ -19,14 +19,14 @@
 </template>
 <script>
 import { DeleteFavoriteRequest, ListCommentsRequest, PostCommentRequest, PutFavoriteRequest } from 'holo-back'
-import Movies from '../../components/template/Movies'
 import ClipsApi from '../../lib/api/clips'
 import CommentApi from '../../lib/api/comment'
 import TagApi from '../../lib/api/tags'
+import ClipsId from '../../components/template/clips/ClipsId'
 
 export default {
   components: {
-    Movies
+    ClipsId
   },
   async asyncData (ctx) {
     const clipId = ctx.params.id
@@ -125,6 +125,11 @@ export default {
     }
   },
   async mounted () {
+    const login = this.$store.getters['login/login']
+    if (!login) {
+      return
+    }
+
     const clipId = this.$route.params.id
 
     try {
