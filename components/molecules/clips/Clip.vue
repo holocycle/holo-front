@@ -7,15 +7,13 @@
     />
     <div>
       <v-layout>
-        <h2>{{ title }}</h2>
+        <h2 class="c-text-base">{{ title }}</h2>
         <v-spacer />
         <FavoriteStartIcon
+          v-show="showFavoriteStar()"
           :favorite="favorite"
           @starClicked="starClicked"
         />
-        <v-btn icon>
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
       </v-layout>
     </div>
     <v-chip v-for="tag in tags" :key="tag.name" class="ma-2" :color="tag.color" label>
@@ -81,6 +79,11 @@ export default {
       } else {
         this.$emit('putFavorite')
       }
+    },
+    showFavoriteStar () {
+      console.log('showFavoriteStar called')
+      console.log(this.$store.getters['login/login'])
+      return this.$store.getters['login/login']
     }
   }
 }

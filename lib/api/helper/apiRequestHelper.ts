@@ -5,12 +5,30 @@ let $axios: NuxtAxiosInstance
 
 export function initializeAxios (axiosInstance: NuxtAxiosInstance) {
   $axios = axiosInstance
+  $axios.interceptors.request.use((request) => {
+    console.log(request.url)
+    return request
+  })
+  $axios.interceptors.response.use((response) => {
+    return response
+  }, (error) => {
+    if (error.response.status === 401 &&
+      process.client &&
+      typeof process.env.LOGIN_URL !== 'undefined' &&
+      localStorage.getItem('token') !== null
+    ) {
+      console.log(localStorage.getItem('token'))
+      const path = location.pathname
+      localStorage.setItem('redirectPath', path)
+      // window.location.href = process.env.LOGIN_URL
+    }
+    return error
+  })
 }
 
 function request<req, res> (method: Method, url: string, params: req): Promise<res> {
   const fullUrl = process.env.API_URL + url
 
-  console.log(fullUrl)
   if (method === 'GET') {
     return $axios.$get<res>(fullUrl, { params })
   } else if (method === 'POST') {

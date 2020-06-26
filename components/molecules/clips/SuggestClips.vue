@@ -1,7 +1,7 @@
 <template>
   <v-list>
-    <v-subheader>{{ title }}</v-subheader>
-    <v-list-item>
+    <v-subheader class="c-text-base">{{ title }}</v-subheader>
+    <v-list-item class="c-text-base">
       実装予定
     </v-list-item>
     <!--    <v-list-item-->

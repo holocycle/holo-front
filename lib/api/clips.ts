@@ -1,6 +1,6 @@
 import {
   DeleteFavoriteRequest, DeleteFavoriteResponse,
-  GetClipResponse,
+  GetClipResponse, GetFavoriteRequest, GetFavoriteResponse,
   ListClipsRequest,
   ListClipsResponse,
   PostClipRequest,
@@ -24,6 +24,14 @@ export default class ClipsApi {
   static getByClipId (clipId: string): Promise<GetClipResponse> {
     const url = '/clips/' + clipId
     return api.get<null, GetClipResponse>(url, null)
+  }
+
+  static getFavorite (clipId: string, getFavoriteRequest: GetFavoriteRequest): Promise<GetFavoriteResponse> {
+    const url = '/clips/' + clipId + '/favorite'
+    return api.getWithToken<GetFavoriteRequest, GetFavoriteResponse>(
+      url,
+      getFavoriteRequest
+    )
   }
 
   static putFavorite (clipId: string, putFavoriteRequest: PutFavoriteRequest): Promise<PutFavoriteResponse> {

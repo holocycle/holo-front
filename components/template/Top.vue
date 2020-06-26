@@ -9,8 +9,8 @@
       title="お気に入り"
       list-url="/users/me"
       :movie-previews="favoriteClipPreviews" />
-    <h1>tag一覧(作成中)</h1>
-    <p>ここにtag一覧(ランダム?)を載せる</p>
+    <h1 class="c-text-base">tag一覧(作成中)</h1>
+    <p class="c-text-base">ここにtag一覧(ランダム?)を載せる</p>
   </div>
 </template>
 

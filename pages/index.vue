@@ -6,9 +6,10 @@
 </template>
 
 <script>
-import { ListClipsRequest } from 'holo-back'
+import { GetUserFavoritesRequest, ListClipsRequest } from 'holo-back'
 import Top from '../components/template/Top'
 import ClipsApi from '../lib/api/clips'
+import UserApi from '../lib/api/users'
 
 export default {
   components: {
@@ -22,7 +23,7 @@ export default {
     const { clips } = await ClipsApi.get(request)
 
     return {
-      popularClipPreviews: clips.map(clip => {
+      popularClipPreviews: clips.map((clip) => {
         return {
           to: '/clips/' + clip.id,
           imageUrl: clip.video.mediumThumnailUrl,
@@ -33,21 +34,22 @@ export default {
   },
   data () {
     return {
-      favoriteClipPreviews: [
-        {
-          to: '/movies/X9zw0QF12Kc',
-          imageUrl: 'https://img.youtube.com/vi/X9zw0QF12Kc/mqdefault.jpg',
-          text: '【歌ってみた】サクラカゼ'
-        }, {
-          to: '/movies/9nD7aQ_cKAM',
-          imageUrl: 'https://img.youtube.com/vi/9nD7aQ_cKAM/mqdefault.jpg',
-          text: '【歌ってみた】バレンタインキッス'
-        }, {
-          to: '/movies/xccH7xxG5zc',
-          imageUrl: 'https://img.youtube.com/vi/xccH7xxG5zc/mqdefault.jpg',
-          text: 'コンセプト'
+      favoriteClipPreviews: []
+    }
+  },
+  async mounted () {
+    try {
+      const request = new GetUserFavoritesRequest()
+      const { favoriteClips } = await UserApi.getUsersMeFavorites(request)
+      this.favoriteClipPreviews = favoriteClips.map((clip) => {
+        return {
+          to: '/clips/' + clip.id,
+          imageUrl: clip.video.mediumThumnailUrl,
+          text: clip.title,
         }
-      ]
+      })
+    } catch (e) {
+      console.log(e)
     }
   }
 }

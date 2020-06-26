@@ -3,12 +3,12 @@
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" app>
       <v-list>
         <template v-for="(item, index) in items">
-          <v-list-item v-if="item.action" :key="item.title" :to="item.action">
+          <v-list-item v-if="item.action" :key="item.title" :to="item.action" :disabled="item.disabled">
             <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon class="c-primary-icon">{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
+              <v-list-item-title class="c-text-base">{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-divider v-else-if="item.divider" :key="index" />
@@ -18,14 +18,14 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar class="c-secondary-base" :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
 
       <nuxt-link to="/" tag="div">
-        <v-icon>mdi-triangle</v-icon>
+        <v-icon class="c-primary-icon">mdi-triangle</v-icon>
       </nuxt-link>
       <nuxt-link to="/" tag="div">
-        <v-toolbar-title to="/" v-text="title" />
+        <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
       </nuxt-link>
       <v-spacer />
       <v-btn to="/help" icon>
@@ -61,7 +61,7 @@
         <v-icon>mdi-login</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-content class="c-base">
       <v-container>
         <v-row>
           <v-col xs="0" sm="0" md="1" lg="1" xl="2" />
@@ -84,8 +84,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+    <v-footer class="c-secondary-base" :fixed="fixed" app elevation="5">
+      <span class="c-text-base">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
@@ -95,7 +95,7 @@ export default {
   data () {
     return {
       clipped: false,
-      drawer: false,
+      drawer: true,
       fixed: false,
       miniVariant: false,
       right: true,
@@ -113,17 +113,32 @@ export default {
           icon: 'mdi-home'
         },
         { divider: true },
-        { header: 'ライバー一覧' },
-        ...this.liverItems,
+        {
+          action: '/livers',
+          title: 'ライバー一覧',
+          icon: 'fab fa-youtube'
+        },
         { divider: true },
         { header: '動画' },
         {
-          action: '/',
-          title: '人気の動画一覧',
+          action: '/clips/toprated',
+          title: '人気順',
           icon: 'mdi-groups'
         },
+        {
+          action: '/',
+          title: '投稿順',
+          icon: 'mdi-groups',
+          disabled: true
+        },
+        {
+          action: '/',
+          title: 'お気に入り',
+          icon: 'mdi-groups',
+          disabled: true
+        },
         { divider: true },
-        { header: '設定' },
+        { header: 'ユーザ' },
         {
           action: '/users',
           title: 'ユーザ一覧',
@@ -135,15 +150,15 @@ export default {
           icon: 'fas fa-cog'
         }
       ]
-    },
-    liverItems () {
-      const livers = this.$store.state.liver.list // : Array<Liver>
-      return livers.map(liver => ({
-        action: '/livers/' + liver.id,
-        title: liver.name,
-        icon: 'mdi-home'
-      }))
     }
+    // liverItems () {
+    //   const livers = this.$store.state.liver.list // : Array<Liver>
+    //   return livers.map(liver => ({
+    //     action: '/livers/' + liver.id,
+    //     title: liver.name,
+    //     icon: 'mdi-home'
+    //   }))
+    // }
   },
   methods: {
     moveToClipCreate () {

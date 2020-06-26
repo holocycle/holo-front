@@ -20,9 +20,15 @@ export default {
       default: () => {}
     }
   },
-  computed: {
-    iconColor () {
-      return this.favorite ? 'yellow' : 'grey'
+  data: () => ({
+    iconColor: 'grey'
+  }),
+  watch: {
+    favorite: {
+      immediate: true,
+      handler (after) {
+        this.iconColor = after ? 'yellow' : 'grey'
+      }
     }
   },
   methods: {

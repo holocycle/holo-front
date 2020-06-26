@@ -5,7 +5,7 @@
     <v-img
       :src="imageUrl"
     />
-    <v-card-text class="text--primary">
+    <v-card-text class="c-text-base">
       {{ text }}
     </v-card-text>
   </v-card>
