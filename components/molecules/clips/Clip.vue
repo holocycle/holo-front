@@ -5,17 +5,23 @@
       :start="start"
       :end="end"
     />
-    <div>
-      <v-layout>
-        <h2 class="c-text-base">{{ title }}</h2>
-        <v-spacer />
-        <FavoriteStartIcon
-          v-show="showFavoriteStar()"
-          :favorite="favorite"
-          @starClicked="starClicked"
-        />
-      </v-layout>
-    </div>
+    <v-layout>
+      <h2 class="c-text-base">{{ title }}</h2>
+      <v-spacer />
+      <FavoriteStartIcon
+        v-show="showFavoriteStar()"
+        :favorite="favorite"
+        @starClicked="starClicked"
+      />
+    </v-layout>
+    <v-layout>
+      <v-spacer />
+      <p class="c-text-base">
+        再生時間: <b>{{ end - start | formatTime }}</b>
+        (開始: <b>{{ start | formatTime }}</b>
+        終了: <b>{{ end | formatTime }}</b>)
+      </p>
+    </v-layout>
     <v-chip v-for="tag in tags" :key="tag.name" class="ma-2" :color="tag.color" label>
       <v-icon left>
         mdi-account-circle-outline
@@ -70,6 +76,13 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    }
+  },
+  filters: {
+    formatTime (time) {
+      const hours = Math.floor(time / 60)
+      const minute = time % 60
+      return hours + ':' + minute
     }
   },
   methods: {
