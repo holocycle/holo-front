@@ -1,14 +1,14 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" app>
+    <v-navigation-drawer v-model="drawer" color="primary" dark :mini-variant="miniVariant" :clipped="clipped" app>
       <v-list>
         <template v-for="(item, index) in items">
           <v-list-item v-if="item.action" :key="item.title" :to="item.action" :disabled="item.disabled">
             <v-list-item-action>
-              <v-icon class="c-primary-icon">{{ item.icon }}</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title class="c-text-base">{{ item.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-divider v-else-if="item.divider" :key="index" />
@@ -20,13 +20,16 @@
     </v-navigation-drawer>
     <v-app-bar class="c-secondary-base" :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-
-      <nuxt-link to="/" tag="div">
-        <v-icon class="c-primary-icon">mdi-triangle</v-icon>
-      </nuxt-link>
-      <nuxt-link to="/" tag="div">
-        <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
-      </nuxt-link>
+      <div class="c-clickable">
+        <nuxt-link to="/" tag="div">
+          <v-icon class="c-primary-icon c-clickable">mdi-triangle</v-icon>
+        </nuxt-link>
+      </div>
+      <div class="c-clickable">
+        <nuxt-link to="/" tag="div">
+          <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
+        </nuxt-link>
+      </div>
       <v-spacer />
       <v-btn to="/help" icon>
         <v-icon>mdi-help-circle-outline</v-icon>
