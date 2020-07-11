@@ -1,6 +1,6 @@
 <!--動画のコメント-->
 <template>
-  <v-list-item :key="key">
+  <v-list-item>
     <v-list-item-avatar>
       <v-img :src="comment.user.iconUrl" />
     </v-list-item-avatar>
@@ -13,26 +13,11 @@
 <script>
 export default {
   props: {
-    key: {
-      type: String,
-      required: true,
-      default: ''
-    },
     comment: {
       type: Object,
       required: false,
       default: null
     }
-  },
-  data: () => ({
-    comment:
-      {
-        content: '1get',
-        user: {
-          iconUrl: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          name: 'user1'
-        }
-      }
-  })
+  }
 }
 </script>
