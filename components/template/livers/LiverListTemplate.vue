@@ -10,7 +10,7 @@
         lg="3"
       >
         <LiverOverviewCard
-          :to="liverDetailUrl.bind(this, liver.id)"
+          :to="liverDetailUrl.bind(this, liver.id)()"
           :image-url="liver.channel.mediumThumbnailUrl"
           :liver-name="liver.name"
         />
