@@ -13,7 +13,7 @@
         <span class="c-text-base">元動画作成:{{ publishedAt | formatTime }}</span>
       </div>
       <v-spacer />
-      <FavoriteStarIcon favorite="true" />
+      <FavoriteStarIcon :favorite="true" />
       <span class="c-text-base">{{ favoriteCount }}</span>
     </v-card-actions>
   </v-card>
@@ -53,7 +53,7 @@ export default {
       default: 0
     },
     publishedAt: {
-      type: Date,
+      type: String,
       required: false,
       default: null
     }

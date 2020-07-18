@@ -95,13 +95,11 @@ export default {
       clipped: false,
       drawer: true,
       miniVariant: false,
-      title: 'holocycle'
+      title: 'holocycle',
+      logining: false
     }
   },
   computed: {
-    logining () {
-      return this.$store.getters['login/login']
-    },
     items () {
       // items on left side menu
       return [
@@ -149,6 +147,9 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    this.logining = this.$store.getters['login/login']
   },
   methods: {
     moveToClipCreate () {
