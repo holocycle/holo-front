@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer v-model="drawer" color="primary" dark :mini-variant="miniVariant" :clipped="clipped" app>
       <v-list>
         <template v-for="(item, index) in items">
@@ -27,7 +27,7 @@
       </div>
       <div class="c-clickable">
         <nuxt-link to="/" tag="div">
-          <v-toolbar-title class="c-primary-text" to="/" v-text="title" />
+          <v-toolbar-title class="c-primary-color" to="/" v-text="title" />
         </nuxt-link>
       </div>
       <v-spacer />
@@ -36,14 +36,15 @@
       </v-btn>
       <v-menu>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
+          <v-btn outlined class="c-primary-color" v-bind="attrs" v-on="on">
             <v-icon>mdi-plus</v-icon>
+            切り抜き作成
           </v-btn>
         </template>
 
         <v-list>
           <v-list-item-group>
-            <v-list-item key="createClip">
+            <v-list-item key="createClip" :disabled="logining">
               <v-list-item-icon>
                 <v-icon>mdi-content-cut</v-icon>
               </v-list-item-icon>
@@ -60,9 +61,15 @@
           </v-list-item-group>
         </v-list>
       </v-menu>
-      <v-btn icon to="/login">
-        <v-icon>mdi-login</v-icon>
-      </v-btn>
+      <div>
+        <v-btn v-if="!logining" color="primary" to="/login">
+          <v-icon>mdi-account</v-icon>
+          ログイン
+        </v-btn>
+        <v-btn v-else icon class="c-primary-color" to="/settings/me">
+          <v-icon>fas fa-cog</v-icon>
+        </v-btn>
+      </div>
     </v-app-bar>
     <v-content class="c-base">
       <v-container>
@@ -75,19 +82,7 @@
         </v-row>
       </v-container>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer class="c-secondary-base" :fixed="fixed" app elevation="5">
+    <v-footer class="c-secondary-base" app elevation="5">
       <span class="c-text-base">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
@@ -99,14 +94,14 @@ export default {
     return {
       clipped: false,
       drawer: true,
-      fixed: false,
       miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'holocycle'
     }
   },
   computed: {
+    logining () {
+      return this.$store.getters['login/login']
+    },
     items () {
       // items on left side menu
       return [
@@ -154,14 +149,6 @@ export default {
         }
       ]
     }
-    // liverItems () {
-    //   const livers = this.$store.state.liver.list // : Array<Liver>
-    //   return livers.map(liver => ({
-    //     action: '/livers/' + liver.id,
-    //     title: liver.name,
-    //     icon: 'mdi-home'
-    //   }))
-    // }
   },
   methods: {
     moveToClipCreate () {

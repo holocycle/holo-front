@@ -18,7 +18,7 @@
       </v-col>
       <v-spacer />
       <v-col cols="auto" align-self="center">
-        <v-btn color="#FF0000" :href="channelUrl">
+        <v-btn color="#FF0000" dark :href="channelUrl">
           YouTubeチャンネル
         </v-btn>
       </v-col>
