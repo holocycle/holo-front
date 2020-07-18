@@ -27,7 +27,9 @@ export default {
         return {
           to: '/clips/' + clip.id,
           imageUrl: clip.video.mediumThumnailUrl,
-          text: clip.title,
+          title: clip.title,
+          favoriteCount: clip.favoriteCount,
+          publishedAt: clip.video.publishedAt
         }
       })
     }
@@ -38,6 +40,9 @@ export default {
     }
   },
   async mounted () {
+    if (!this.$store.getters['login/login']) {
+      return
+    }
     try {
       const request = new GetUserFavoritesRequest()
       const { favoriteClips } = await UserApi.getUsersMeFavorites(request)
@@ -45,7 +50,9 @@ export default {
         return {
           to: '/clips/' + clip.id,
           imageUrl: clip.video.mediumThumnailUrl,
-          text: clip.title,
+          title: clip.title,
+          favoriteCount: clip.favoriteCount,
+          publishedAt: clip.video.publishedAt
         }
       })
     } catch (e) {
