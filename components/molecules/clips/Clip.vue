@@ -9,7 +9,7 @@
       <h2 class="c-text-base">{{ title }}</h2>
       <v-spacer />
       <FavoriteStartIcon
-        v-show="showFavoriteStar()"
+        v-show="showFavoriteStar"
         :favorite="favorite"
         @starClicked="starClicked"
       />
@@ -42,6 +42,13 @@ export default {
     FavoriteStartIcon,
     YoutubeIframe,
     TextWithLineBreaks
+  },
+  filters: {
+    formatTime (time) {
+      const hours = Math.floor(time / 60)
+      const minute = time % 60
+      return hours + ':' + minute
+    }
   },
   props: {
     videoId: {
@@ -78,12 +85,11 @@ export default {
       default: false
     }
   },
-  filters: {
-    formatTime (time) {
-      const hours = Math.floor(time / 60)
-      const minute = time % 60
-      return hours + ':' + minute
-    }
+  data: () => ({
+    showFavoriteStar: false
+  }),
+  mounted () {
+    this.showFavoriteStar = this.$store.getters['login/login']
   },
   methods: {
     starClicked () {
@@ -92,11 +98,6 @@ export default {
       } else {
         this.$emit('putFavorite')
       }
-    },
-    showFavoriteStar () {
-      console.log('showFavoriteStar called')
-      console.log(this.$store.getters['login/login'])
-      return this.$store.getters['login/login']
     }
   }
 }
