@@ -13,7 +13,10 @@
         <span class="c-text-base">元動画作成:{{ publishedAt | formatTime }}</span>
       </div>
       <v-spacer />
-      <FavoriteStarIcon :favorite="true" />
+      <FavoriteStarIcon
+        favorite=true
+        @starClicked="() => {}"
+      />
       <span class="c-text-base">{{ favoriteCount }}</span>
     </v-card-actions>
   </v-card>

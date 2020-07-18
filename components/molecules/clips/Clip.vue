@@ -8,7 +8,7 @@
     <v-layout>
       <h2 class="c-text-base">{{ title }}</h2>
       <v-spacer />
-      <FavoriteStartIcon
+      <FavoriteStarIcon
         v-show="showFavoriteStar"
         :favorite="favorite"
         @starClicked="starClicked"
@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import FavoriteStartIcon from '../../atoms/icon/FavoriteStarIcon'
+import FavoriteStarIcon from '../../atoms/icon/FavoriteStarIcon'
 import YoutubeIframe from '../../atoms/youtube/YoutubeIframe'
 import TextWithLineBreaks from '../../atoms/textField/TextWithLineBreaks'
 
 export default {
   components: {
-    FavoriteStartIcon,
+    FavoriteStarIcon,
     YoutubeIframe,
     TextWithLineBreaks
   },
