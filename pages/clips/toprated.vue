@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>人気の動画</h2>
+    <h2 class="c-text-base">人気の動画</h2>
     <v-row>
       <v-col
         v-for="clip in topratedClips"
@@ -13,7 +13,9 @@
         <ClipPreviewCard
           :to="getDetailUrl(clip.id)"
           :image-url="clip.video.mediumThumnailUrl"
-          :text="clip.title"
+          :title="clip.title"
+          :favorite-count="clip.favoriteCount"
+          :published-at="clip.video.publishedAt"
         />
       </v-col>
     </v-row>

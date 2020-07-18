@@ -26,7 +26,9 @@
         <ClipPreviewCard
           :to="getDetailUrl(clip.id)"
           :image-url="clip.video.mediumThumnailUrl"
-          :text="clip.title"
+          :title="clip.title"
+          :favorite-count="clip.favoriteCount"
+          :published-at="clip.video.publishedAt"
         />
       </v-col>
     </v-row>

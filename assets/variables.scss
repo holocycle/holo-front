@@ -5,10 +5,11 @@
 $base: #f2f5f6;
 $secondary-base: #fdfeff;
 
-$primary: #6ECDF8;
+$primary: #6ecdf8;
 
-$text-primary: #5592b3;
+$text-primary: #72a2bb;
 $text-base: #50616a;
+$text-secondary: #6e94a7;
 $test: #ececec;
 
 
@@ -21,7 +22,7 @@ $test: #ececec;
   caret-color: $primary !important;
 }
 
-.c-primary-text {
+.c-primary-color {
   color: $primary !important;
   caret-color: $primary !important;
 }
@@ -42,6 +43,10 @@ $test: #ececec;
 .c-text-base {
   color: $text-base !important;
   caret-color: $text-base !important;
+}
+.c-text-secondary {
+  color: $text-secondary !important;
+  caret-color: $text-secondary !important;
 }
 
 .c-clickable {

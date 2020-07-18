@@ -9,16 +9,16 @@
       </v-col>
       <v-col cols="auto" align-self="center">
         <div>
-          <h2>{{ name }}</h2>
+          <h2 class="c-text-base">{{ name }}</h2>
         </div>
-        <div>
+        <div class="c-text-secondary">
           <span>チャンネル登録者数</span>
           <span>{{ channelSubscriber }}</span>
         </div>
       </v-col>
       <v-spacer />
       <v-col cols="auto" align-self="center">
-        <v-btn color="#FF0000" :href="channelUrl">
+        <v-btn color="#FF0000" dark :href="channelUrl">
           YouTubeチャンネル
         </v-btn>
       </v-col>

@@ -4321,7 +4321,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-holo-back@^0.2.3:
+holo-back@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/holo-back/-/holo-back-0.2.4.tgz#8dbbee181f6c0ed872e7e87f198ed462a2498c78"
   integrity sha512-KrE+j0jBu4S0ApIYd3B17H/aVlybMRTNrr30w3t6BiWD7TaGkl7A7tBKlPD3PvgIFdCeQvWn+RlLolb3M2V7rw==
@@ -5453,6 +5453,11 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+moment@^2.27.0:
+  version "2.27.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
+  integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
 
 move-concurrently@^1.0.1:
   version "1.0.1"

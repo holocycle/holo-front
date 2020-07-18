@@ -24,11 +24,11 @@ export default {
   props: {
     popularClipPreviews: {
       type: Array,
-      required: true,
+      required: true
     },
     favoriteClipPreviews: {
       type: Array,
-      required: true,
+      required: true
     }
   }
 }

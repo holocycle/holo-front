@@ -31,7 +31,9 @@ lg: 4 column
         <ClipPreviewCard
           :to="moviePreview.to"
           :image-url="moviePreview.imageUrl"
-          :text="moviePreview.text"
+          :title="moviePreview.title"
+          :favorite-count="moviePreview.favoriteCount"
+          :published-at="moviePreview.publishedAt"
         />
       </v-col>
     </v-row>
