@@ -14,7 +14,7 @@
       </div>
       <v-spacer />
       <FavoriteStarIcon
-        favorite=true
+        favorite
         @starClicked="() => {}"
       />
       <span class="c-text-base">{{ favoriteCount }}</span>

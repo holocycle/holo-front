@@ -1,6 +1,6 @@
 <template>
-  <v-btn icon>
-    <v-icon :color="iconColor" @click="clicked">
+  <v-btn icon @click="clicked">
+    <v-icon :color="iconColor">
       mdi-star
     </v-icon>
   </v-btn>
