@@ -1,80 +1,21 @@
 <template>
-  <div>
-    <h2 class="c-text-base">切り抜きを作成する</h2>
-    <v-row>
-      <v-col cols="4">
-        <v-form>
-          <v-text-field
-            disabled="disabled"
-            v-model="videoId"
-            label="動画ID"
-          />
-          <v-text-field
-            v-model="title"
-            label="タイトル"
-          />
-          <v-textarea
-            v-model="description"
-            label="詳細"
-          />
-          <v-layout>
-            <v-text-field
-              v-model.number="start"
-              disabled="disabled"
-              label="開始時間(秒)"
-            />
-            <v-spacer />
-            <v-text-field
-              v-model.number="end"
-              disabled="disabled"
-              label="終了時間(秒)"
-            />
-          </v-layout>
-          <v-layout>
-            <v-btn
-              color="primary"
-              outlined
-              @click="back"
-            >
-              戻る
-            </v-btn>
-            <v-spacer />
-            <v-btn
-              color="primary"
-              @click="createClip"
-            >
-              作成
-            </v-btn>
-          </v-layout>
-        </v-form>
-      </v-col>
-      <v-col cols="8">
-        <v-card class="c-text-base">
-          <v-card-title>プレビュー</v-card-title>
-          <v-card-subtitle>ここで再生時間の確認ができます</v-card-subtitle>
-          <v-card-text>
-            <Clip
-              :video-id="videoId"
-              :start="start"
-              :end="end"
-              :title="title"
-              :chips="chips"
-              :descriptions="description"
-            />
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
+  <ClipConfirm
+    :videoId="videoId"
+    :start="start"
+    :end="end"
+    @createClip="createClip"
+    @back="back"
+  />
 </template>
 
 <script>
-import { PostClipRequest } from 'holo-back'
+import { PostClipRequest, PutTagOnClipRequest } from 'holo-back'
+import ClipConfirm from '../../components/template/clips/ClipsConfirm'
 import ClipsApi from '../../lib/api/clips'
-import Clip from '../../components/molecules/clips/Clip'
+import TagApi from '../../lib/api/tags'
 
 export default {
-  components: { Clip },
+  components: { ClipConfirm },
   asyncData (ctx) {
     const query = ctx.query
     return {
@@ -88,27 +29,37 @@ export default {
       videoId: '',
       start: 0,
       end: 0,
-      title: 'タイトルをここに記載',
-      description: '詳細をここに記載\n改行も入る',
-      chips: []
     }
   },
   methods: {
-    createClip () {
+    async createClip (clip) {
       const request = new PostClipRequest()
-      request.videoId = this.videoId
-      request.title = this.title
-      request.description = this.description
-      request.beginAt = Number(this.start)
-      request.endAt = Number(this.end)
+      request.videoId = clip.videoId
+      request.title = clip.title
+      request.description = clip.description
+      request.beginAt = Number(clip.start)
+      request.endAt = Number(clip.end)
 
-      ClipsApi.post(
+      // clipを登録する
+      let clipId = ''
+      await ClipsApi.post(
         request
       ).then(
         (response) => {
-          this.$router.push({ path: '/clips/' + response.clipId })
+          clipId = response.clipId
         }
       )
+      if (clipId === '') {
+        // TODO 登録エラー
+      }
+
+      // clipに紐づくtagを登録する
+      await clip.tags.forEach((tag) => {
+        const req = new PutTagOnClipRequest()
+        TagApi.putByClipId(clipId, tag.id, req)
+      })
+
+      this.$router.push({ path: '/clips/' + clipId })
     },
     back () {
       this.$router.push({
