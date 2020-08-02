@@ -1,5 +1,6 @@
 import { NuxtAxiosInstance } from '@nuxtjs/axios'
 import { Method } from 'axios'
+import qs from 'qs'
 
 let $axios: NuxtAxiosInstance
 
@@ -20,7 +21,7 @@ export function initializeAxios (axiosInstance: NuxtAxiosInstance) {
       console.log(localStorage.getItem('token'))
       const path = location.pathname
       localStorage.setItem('redirectPath', path)
-      // window.location.href = process.env.LOGIN_URL
+      window.location.href = process.env.LOGIN_URL
     }
     return error
   })
@@ -30,7 +31,7 @@ function request<req, res> (method: Method, url: string, params: req): Promise<r
   const fullUrl = process.env.API_URL + url
 
   if (method === 'GET') {
-    return $axios.$get<res>(fullUrl, { params })
+    return $axios.$get<res>(fullUrl + '?' + qs.stringify(params, { arrayFormat: 'repeat' }), {})
   } else if (method === 'POST') {
     return $axios.$post<res>(fullUrl, params)
   } else if (method === 'PUT') {

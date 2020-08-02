@@ -7,15 +7,17 @@
       :avatar-url="liver.channel.mediumThumbnailUrl"
       :banner-url="liver.channel.mediumBannerUrl"
       :channel-subscriber="liver.channel.subscriberCount"
-      :latest-movies="latestMovies"
-      :popular-movies="popularMovies"
+      :latest-movies="latestClipList"
+      :popular-movies="topRateClipList"
     />
   </div>
 </template>
 
 <script>
+import { ListClipsRequest } from 'holo-back'
 import LiverDetail from '../../components/template/LiverDetail'
 import LiverApi from '../../lib/api/livers'
+import ClipsApi from '../../lib/api/clips'
 
 export default {
   components: {
@@ -24,8 +26,39 @@ export default {
   async asyncData (ctx) {
     const liverId = ctx.params.id
     const { liver } = await LiverApi.getBy(liverId)
+
+    const latestReq = new ListClipsRequest()
+    latestReq.limit = 10
+    latestReq.orderBy = 'latest'
+    latestReq.Tags = [liver.name]
+    const latestClipList = await ClipsApi.get(latestReq)
+
+    const toplateReq = new ListClipsRequest()
+    toplateReq.limit = 10
+    toplateReq.orderBy = 'toprated'
+    toplateReq.Tags = [liver.name]
+    const topRateClipList = await ClipsApi.get(toplateReq)
+
     return {
-      liver
+      liver,
+      latestClipList: latestClipList.clips.map((clip) => {
+        return {
+          to: '/clips/' + clip.id,
+          imageUrl: clip.video.mediumThumnailUrl,
+          title: clip.title,
+          favoriteCount: clip.favoriteCount,
+          publishedAt: clip.video.publishedAt
+        }
+      }),
+      topRateClipList: topRateClipList.clips.map((clip) => {
+        return {
+          to: '/clips/' + clip.id,
+          imageUrl: clip.video.mediumThumnailUrl,
+          title: clip.title,
+          favoriteCount: clip.favoriteCount,
+          publishedAt: clip.video.publishedAt
+        }
+      }),
     }
   },
   data () {
