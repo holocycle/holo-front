@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -40,16 +40,10 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {
-      src: '~/plugins/auth-localstorage',
-      ssr: false
-    },
+    { src: '~/plugins/auth-localstorage' },
     { src: '~/plugins/axios-accesser' },
     { src: '~/plugins/vue-youtube' },
-    {
-      src: '~/plugins/vuetify',
-      ssr: false
-    }
+    { src: '~/plugins/vuetify' }
   ],
   /*
   ** Nuxt.js dev-modules

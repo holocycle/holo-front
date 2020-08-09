@@ -12,9 +12,10 @@ export default {
   components: {
     LiverListTemplate
   },
-  data () {
+  async asyncData (ctx) {
+    await ctx.store.dispatch('liver/fetch')
     return {
-      livers: this.$store.state.liver.list
+      livers: ctx.store.state.liver.list
     }
   },
   methods: {
