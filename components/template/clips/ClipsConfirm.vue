@@ -70,14 +70,14 @@
           <v-card-title>プレビュー</v-card-title>
           <v-card-subtitle>ここで再生時間の確認ができます</v-card-subtitle>
           <v-card-text>
-            <!--            <Clip-->
-            <!--              :video-id="videoId"-->
-            <!--              :start="start"-->
-            <!--              :end="end"-->
-            <!--              :title="title"-->
-            <!--              :chips="chips"-->
-            <!--              :descriptions="description"-->
-            <!--            />-->
+            <Clip
+              :video-id="videoId"
+              :start="start"
+              :end="end"
+              :title="title"
+              :chips="tags"
+              :descriptions="description"
+            />
           </v-card-text>
         </v-card>
       </v-col>
@@ -86,13 +86,13 @@
 </template>
 
 <script>
-// import Clip from '../../molecules/clips/Clip'
+import Clip from '../../molecules/clips/Clip'
 import SetTag from '../../dialog/SetTag'
 
 export default {
   components: {
-    SetTag
-    // Clip
+    SetTag,
+    Clip
   },
   props: {
     videoId: {
