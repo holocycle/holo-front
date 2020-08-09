@@ -4321,10 +4321,10 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-holo-back@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/holo-back/-/holo-back-0.2.4.tgz#8dbbee181f6c0ed872e7e87f198ed462a2498c78"
-  integrity sha512-KrE+j0jBu4S0ApIYd3B17H/aVlybMRTNrr30w3t6BiWD7TaGkl7A7tBKlPD3PvgIFdCeQvWn+RlLolb3M2V7rw==
+holo-back@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/holo-back/-/holo-back-0.2.6.tgz#b893e7c8663942e08c85d6a133479063085ab0de"
+  integrity sha512-etCKKmE7PzUo/1jUwAd9P8tymodKx83jFF7o/OkNSqb40ob0d/CE/VGBgf1Uy2TRohBHbb+piDEhKCDiEOTVCw==
 
 hoopy@^0.1.4:
   version "0.1.4"

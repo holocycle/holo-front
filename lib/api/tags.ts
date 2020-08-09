@@ -16,7 +16,7 @@ import api from './helper/apiRequestHelper'
 
 export default class TagApi {
   static get (request: ListTagsRequest): Promise<ListTagsResponse> {
-    const url = '/tags/list'
+    const url = '/tags'
     return api.get<ListTagsRequest, ListTagsResponse>(url, request)
   }
 

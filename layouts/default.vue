@@ -44,7 +44,7 @@
 
         <v-list>
           <v-list-item-group>
-            <v-list-item key="createClip" :disabled="logining">
+            <v-list-item key="createClip" :disabled="!logining">
               <v-list-item-icon>
                 <v-icon>mdi-content-cut</v-icon>
               </v-list-item-icon>
