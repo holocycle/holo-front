@@ -12,7 +12,7 @@
 <script>
 import { ListTagsRequest } from 'holo-back'
 import ClipsCreate from '../../components/template/clips/ClipsCreate'
-import TagsApi from '../../lib/api/Tags'
+import TagsApi from '../../lib/api/tags'
 
 export default {
   components: {
