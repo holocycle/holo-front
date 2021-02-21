@@ -84,6 +84,19 @@ export default {
       }
     }
   },
+  storybook: {
+    // Options
+    // https://storybook.nuxtjs.org/setup
+    addons: [
+      '@storybook/addon-actions',
+      '@storybook/addon-backgrounds',
+      '@storybook/addon-docs',
+      '@storybook/addon-controls',
+      '@storybook/addon-notes',
+      '@storybook/addon-toolbars',
+      '@storybook/addon-viewport'
+    ]
+  },
   /*
   ** Build configuration
   */

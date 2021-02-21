@@ -43,4 +43,10 @@ https://fontawesome.com/icons?d=gallery
 <v-icon>fab fa-youtube</v-icon>
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## storybook
+
+```sh
+yarn storybook
+```
+
+access http://localhost:3003

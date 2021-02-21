@@ -10,8 +10,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "nuxt storybook"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
@@ -22,20 +21,22 @@
     "vue-youtube": "^1.4.0"
   },
   "devDependencies": {
+    "@nuxt/types": "^2.15.1",
     "@nuxt/typescript-build": "^2.0.4",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/storybook": "^3.2.0",
     "@nuxtjs/vuetify": "^1.11.3",
     "@storybook/addon-actions": "^6.1.18",
-    "@storybook/addon-knobs": "^6.1.18",
-    "@storybook/addon-links": "^6.1.18",
+    "@storybook/addon-backgrounds": "^6.1.18",
+    "@storybook/addon-controls": "^6.1.18",
+    "@storybook/addon-docs": "^6.1.18",
     "@storybook/addon-notes": "^5.3.21",
     "@storybook/addon-viewport": "^6.1.18",
     "@storybook/addons": "^6.1.18",
-    "@storybook/vue": "^6.1.18",
     "babel-eslint": "^10.0.1",
     "eslint": "^7.20.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "storybook-addon-vue-info": "^1.4.2"
+    "ts-node": "^9.1.1"
   }
 }
