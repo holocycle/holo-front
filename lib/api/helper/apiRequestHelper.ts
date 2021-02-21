@@ -14,7 +14,6 @@ export function initializeAxios (axiosInstance: NuxtAxiosInstance) {
     return response
   }, (error) => {
     if (error.response.status === 401 &&
-      process.client &&
       typeof process.env.LOGIN_URL !== 'undefined' &&
       localStorage.getItem('token') !== null
     ) {
