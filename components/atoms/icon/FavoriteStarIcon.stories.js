@@ -1,4 +1,4 @@
-import FavoriteStarIcon from '@/components/Atoms/icon/FavoriteStarIcon'
+import FavoriteStarIcon from '@/components/atoms/icon/FavoriteStarIcon'
 
 export default {
   title: 'Atoms/Favorite',

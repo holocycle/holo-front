@@ -1,4 +1,4 @@
-import GoogleLoginButton from '@/components/Atoms/google/GoogleLoginButton'
+import GoogleLoginButton from '@/components/atoms/google/GoogleLoginButton'
 
 export default {
   title: 'Atoms/Google'
